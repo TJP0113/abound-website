@@ -1,3 +1,5 @@
+import { bilingualDetails as serviceDetails, serviceIntroductions } from './service-bilingual.js';
+
 const projects = [
   {
     number: '01',
@@ -114,6 +116,7 @@ const link = (label, href, extra = '') => `<a href="${href}" ${extra}>${label}</
 const arrowIcon = '<svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg>';
 const arrow = '<span class="link-arrow" aria-hidden="true">' + arrowIcon + '</span>';
 const path = window.location.pathname.replace(/\/$/, '') || '/';
+if (path === '/services') window.location.replace('/services/branding');
 const isHome = path === '/';
 const isAbout = path === '/about';
 const isServices = path === '/services';
@@ -130,7 +133,7 @@ function nav() {
     ['Contact', '/contact', isContact],
   ];
   const links = items.map(([label, href, active]) =>
-    link(label, href, `class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}`),
+    label === 'Services' ? `<details class="services-dropdown"><summary class="${active ? 'active' : ''}">Services <svg class="dropdown-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true"><path d="m4 6 4 4 4-4"/></svg></summary><div class="services-dropdown-panel">${services.map(service => link(service.title, `/services/${service.slug}`, path === `/services/${service.slug}` ? 'class="active" aria-current="page"' : '')).join('')}</div></details>` : link(label, href, `class="${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}`),
   ).join('');
   return `
     <header class="site-header">
@@ -148,6 +151,10 @@ function nav() {
     </header>`;
 }
 
+function workingHours() {
+  return `<section class="working-hours" aria-label="Working hours"><h2>Working Hours</h2><dl><div><dt>MON–FRI</dt><dd>9:00 AM–6:00 PM</dd></div><div><dt>SAT–SUN</dt><dd>OFF</dd></div></dl></section>`;
+}
+
 function footer() {
   return `
     <footer class="site-footer">
@@ -160,20 +167,24 @@ function footer() {
           <a href="mailto:aboundcreation@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m4 7 8 6 8-6"/></svg><span>aboundcreation@gmail.com</span></a>
           <a href="tel:+60196609102"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 19-660 9102</span></a>
           <a href="tel:+60137766128"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 13-776 6128</span></a>
-          <a class="footer-address" href="https://maps.google.com/?q=4+Jalan+Seroja+41+Taman+Johor+Jaya+Johor+Bahru" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg><span>4, Jalan Seroja 41,<br />Taman Johor Jaya,<br />81100 Johor Bahru,<br />Johor, Malaysia</span></a>
+          <a class="footer-address" href="https://maps.google.com/?q=4+Jalan+Seroja+41+Taman+Johor+Jaya+Johor+Bahru" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg><span><span class="address-line">4, Jalan Seroja 41, Taman Johor Jaya,</span><span class="address-line">81100 Johor Bahru, Johor, Malaysia</span></span></a>
         </section>
         <nav class="footer-nav" aria-label="Footer navigation">
           <h2>Navigation</h2>
           ${link('Home', '/')}
           ${link('About', '/about')}
-          ${link('Services', '/services')}
           ${link('Portfolio', '/portfolio')}
           ${link('Contact', '/contact')}
+        </nav>
+        <nav class="footer-nav footer-services" aria-label="Footer services">
+          <h2>Services</h2>
+          ${services.map(service => link(service.title, `/services/${service.slug}`)).join('')}
         </nav>
         <div class="footer-socials">
           <h2>Socials</h2>
           <a href="https://www.instagram.com/aboundcreation?igsi=M2VwbXg1ZDQwcXB2" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="icon-fill" cx="17.5" cy="6.8" r="1"/></svg><span>Instagram ${arrow}</span></a>
           <a href="https://www.facebook.com/p/Abound-Creation-61576845867548/" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.1 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H8v3.1h2.7v8h3.4Z"/></svg><span>Facebook ${arrow}</span></a>
+          ${workingHours()}
         </div>
       </div>
       <div class="footer-bottom">
@@ -269,7 +280,7 @@ function home() {
           <p>One considered design approach, carried through every detail and touchpoint.</p>
         </div>
         <div class="service-list">${serviceRows(true)}</div>
-        <a class="text-link motion-cta" href="/services">Explore our services ${arrow}</a>
+        <a class="text-link motion-cta" href="/services/branding">Explore branding ${arrow}</a>
       </section>
 
       <section class="clients-section" aria-labelledby="clients-title">
@@ -339,34 +350,47 @@ function about() {
     </main>${footer()}`;
 }
 
-function servicesPage() {
-  return `
-    ${nav()}<main id="top" class="inner-page">
-      ${pageIntro('OUR SERVICES', 'A brand, made<br /><em>whole.</em>', 'From the first spark to the things people see, wear and take with them.')}
-      <section class="services-catalog section-pad reveal" aria-label="Explore our services">
-        ${services.map((service, index) => `
-          <article class="service-feature service-feature-${index + 1} scroll-rise">
-            <a class="service-feature-image" href="/services/${service.slug}" aria-label="Explore ${service.title}"><img src="${service.image}" alt="${service.alt}" loading="lazy" /></a>
-            <div class="service-feature-copy"><span class="eyebrow">${service.number} / SERVICE</span><h2><a href="/services/${service.slug}">${service.title}</a></h2><p>${service.description}</p><a class="text-link" href="/services/${service.slug}">Explore ${service.title} ${arrow}</a></div>
-          </article>`).join('')}
-      </section>
-      <section class="service-note reveal"><span class="eyebrow">BUILT TO WORK TOGETHER</span><h2>One connected<br /><em>design language.</em></h2><p>Start with one service or bring us in for the full picture. We’ll help create a coherent brand experience across every touchpoint.</p><a class="text-link" href="/contact">Talk through your project ${arrow}</a></section>
-      ${cta()}
-    </main>${footer()}`;
-}
-
 function serviceDetailPage(service) {
   const related = services.filter(item => item.slug !== service.slug).slice(0, 2);
+  const [title, chineseTitle, introduction, chineseIntroduction] = serviceIntroductions[service.slug];
   return `
     ${nav()}<main id="top" class="inner-page service-detail-page">
-      ${pageIntro(`SERVICE ${service.number} · ABOUND CREATION`, service.title, service.description)}
-      <figure class="service-detail-image"><img src="${service.image}" alt="${service.alt}" /><figcaption>ABOUND CREATION · ${service.title.toUpperCase()}</figcaption></figure>
-      <section class="service-detail-copy section-pad reveal">
-        <div><span class="eyebrow">HOW WE CAN HELP</span><h2>${service.headline}</h2></div>
-        <div><p>${service.detail}</p><h3>What we can create</h3><ul>${service.offerings.map(item => `<li>${item}</li>`).join('')}</ul><a class="button button-dark motion-cta" href="/contact">Discuss your ${service.title} project ${arrow}</a></div>
+      <section class="service-detail-split section-pad">
+        <div class="service-detail-text">
+          <span class="eyebrow">SERVICE ${service.number} · ABOUND CREATION</span>
+          <h1>${title}</h1>
+          <p class="service-detail-lead" lang="zh-Hans">${chineseTitle}</p>
+          <p lang="en">${introduction}</p>
+          <p class="bilingual-chinese" lang="zh-Hans">${chineseIntroduction}</p>
+          <a class="button button-dark motion-cta" href="/contact">Start a Project · 开始项目 ${arrow}</a>
+        </div>
+        <figure class="service-detail-image"><img src="${service.image}" alt="${service.alt}" /><figcaption>ABOUND CREATION · ${service.title.toUpperCase()}</figcaption></figure>
+      </section>
+      <div class="service-detail-topics">
+        ${(serviceDetails[service.slug] || []).map(([title, subtitle, description, points, visual, chineseDescription, chinesePoints], index) => `
+          <section class="service-topic section-pad" aria-labelledby="topic-${index}">
+            <div class="service-topic-copy scroll-rise">
+              <span class="eyebrow">${service.title} / ${String(index + 1).padStart(2, '0')}</span>
+              <h2 id="topic-${index}">${title}</h2>
+              <p class="service-topic-subtitle" lang="zh-Hans">${subtitle}</p>
+              <p lang="en">${description}</p>
+              <p class="bilingual-chinese" lang="zh-Hans">${chineseDescription}</p>
+              <ul>${points.map((point, pointIndex) => `<li><span lang="en">${point}</span><span class="bilingual-point" lang="zh-Hans">${chinesePoints[pointIndex]}</span></li>`).join('')}</ul>
+            </div>
+            <figure class="service-topic-image scroll-rise"><img src="/visuals/${visual}.jpg" alt="Abound Creation ${service.title} campaign imagery accompanying ${title}" loading="lazy" /></figure>
+          </section>`).join('')}
+      </div>
+      <section class="service-partner section-pad">
+        <span class="eyebrow">ONE CREATIVE PARTNER · 从品牌到实际应用</span>
+        <h2>Everything your brand needs,<br /><em>in one place.</em></h2>
+        <p lang="en">From brand identity to uniforms, merchandise, graphic design, photography and marketing, our six core services work individually or together to build a complete, consistent brand experience.</p>
+        <p lang="zh-Hans">Abound Creation 的不同服务并不是独立存在。我们希望帮助一个品牌从品牌识别、制服、周边、平面设计、摄影到市场营销，建立一套完整并统一的品牌体验。你可以只选择其中一个服务，也可以让我们协助完成整个品牌的视觉与内容系统。</p>
+        <h3>Not sure what you need? · 不确定你需要什么？</h3>
+        <p lang="en">Tell us about your brand, project, budget, quantity and timeline. We will recommend services and production methods suited to your needs.</p>
+        <p lang="zh-Hans">告诉我们你的品牌、项目、预算、数量与时间安排。我们会根据你的需求建议适合的服务与制作方式。</p>
+        <a class="button button-dark" href="/contact">Start a Project · 开始项目 ${arrow}</a>
       </section>
       <section class="service-related section-pad"><span class="eyebrow">EXPLORE MORE SERVICES</span><div>${related.map(item => `<a href="/services/${item.slug}"><span>${item.number}</span><strong>${item.title}</strong><i aria-hidden="true">${arrowIcon}</i></a>`).join('')}</div></section>
-      ${cta()}
     </main>${footer()}`;
 }
 
@@ -415,7 +439,7 @@ function contact() {
           <button class="button button-dark motion-cta" type="submit">Send an enquiry ${arrow}</button>
           <p class="form-message" aria-live="polite"></p>
         </form>
-        <aside class="contact-aside"><span class="eyebrow">OR REACH US DIRECTLY</span><a href="mailto:aboundcreation@gmail.com">aboundcreation@gmail.com ${arrow}</a><a href="tel:+60196609102">+60 19-660 9102 ${arrow}</a><a href="https://www.instagram.com/aboundcreation?igsi=M2VwbXg1ZDQwcXB2" target="_blank" rel="noreferrer">Instagram ${arrow}</a><p>Johor Bahru<br />Johor, Malaysia</p></aside>
+        <aside class="contact-aside"><span class="eyebrow">OR REACH US DIRECTLY</span><a href="mailto:aboundcreation@gmail.com">aboundcreation@gmail.com ${arrow}</a><a href="tel:+60196609102">+60 19-660 9102 ${arrow}</a><a href="https://www.instagram.com/aboundcreation?igsi=M2VwbXg1ZDQwcXB2" target="_blank" rel="noreferrer">Instagram ${arrow}</a><p>Johor Bahru<br />Johor, Malaysia</p>${workingHours()}</aside>
       </section>
     </main>${footer()}`;
 }
@@ -426,13 +450,24 @@ const currentService = services.find(service => service.slug === portfolioSlug);
 let content;
 if (isAbout) content = about();
 else if (isServiceDetail && currentService) content = serviceDetailPage(currentService);
-else if (isServices) content = servicesPage();
+else if (isServices) content = serviceDetailPage(services[0]);
 else if (isContact) content = contact();
 else if (isPortfolio && (path.includes('/portfolio/') || path.includes('/work/'))) content = projectPage(currentProject || projects[0]);
 else if (isPortfolio) content = portfolio();
 else content = home();
 
 document.querySelector('#app').innerHTML = content;
+
+const servicesDropdown = document.querySelector('.services-dropdown');
+document.addEventListener('click', event => {
+  if (!servicesDropdown.contains(event.target)) servicesDropdown.open = false;
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && servicesDropdown.open) {
+    servicesDropdown.open = false;
+    servicesDropdown.querySelector('summary').focus();
+  }
+});
 
 const menuToggle = document.querySelector('.menu-toggle');
 menuToggle?.addEventListener('click', () => {
