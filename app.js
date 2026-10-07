@@ -111,7 +111,8 @@ const clientLogos = [
 ];
 
 const link = (label, href, extra = '') => `<a href="${href}" ${extra}>${label}</a>`;
-const arrow = '<span aria-hidden="true">↗</span>';
+const arrowIcon = '<svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg>';
+const arrow = '<span class="link-arrow" aria-hidden="true">' + arrowIcon + '</span>';
 const path = window.location.pathname.replace(/\/$/, '') || '/';
 const isHome = path === '/';
 const isAbout = path === '/about';
@@ -159,7 +160,7 @@ function footer() {
           <a href="mailto:aboundcreation@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m4 7 8 6 8-6"/></svg><span>aboundcreation@gmail.com</span></a>
           <a href="tel:+60196609102"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 19-660 9102</span></a>
           <a href="tel:+60137766128"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 13-776 6128</span></a>
-          <a class="footer-address" href="https://maps.google.com/?q=10+Jalan+Seroja+39+Taman+Johor+Jaya+Johor+Bahru" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg><span>10, Jalan Seroja 39,<br />Taman Johor Jaya,<br />81100 Johor Bahru,<br />Johor, Malaysia</span></a>
+          <a class="footer-address" href="https://maps.google.com/?q=4+Jalan+Seroja+41+Taman+Johor+Jaya+Johor+Bahru" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg><span>4, Jalan Seroja 41,<br />Taman Johor Jaya,<br />81100 Johor Bahru,<br />Johor, Malaysia</span></a>
         </section>
         <nav class="footer-nav" aria-label="Footer navigation">
           <h2>Navigation</h2>
@@ -178,7 +179,7 @@ function footer() {
       <div class="footer-bottom">
         <span>© 2026 Abound Creation. All rights reserved.</span>
         <span>Johor, Malaysia</span>
-        <a href="#top">Back to top ↑</a>
+        <a href="#top">Back to top <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5m-7 7 7-7 7 7"/></svg></a>
       </div>
     </footer>`;
 }
@@ -202,7 +203,7 @@ function serviceRows(scrollReveal = false) {
       <span class="service-number">${service.number}</span>
       <h3>${service.title}</h3>
       <p>${service.description}</p>
-      <span class="service-arrow" aria-hidden="true">↗</span>
+      <span class="service-arrow" aria-hidden="true">${arrowIcon}</span>
     </a>`).join('');
 }
 
@@ -244,14 +245,14 @@ function home() {
               ${bannerSlides.map((_, index) => `<button type="button" aria-label="Show banner ${index + 1}" aria-pressed="${index === 0}" class="${index === 0 ? 'is-active' : ''}" data-banner-dot="${index}"></button>`).join('')}
             </div>
             <button class="banner-pause" type="button" aria-label="Pause slideshow" aria-pressed="false" data-banner-pause>PAUSE</button>
-            <button class="banner-next" type="button" aria-label="Show next banner" data-banner-next>↗</button>
+            <button class="banner-next" type="button" aria-label="Show next banner" data-banner-next>${arrowIcon}</button>
           </div>
         </section>
       </section>
 
       <section class="intro-statement reveal">
-        <div class="section-index"><span>01</span><span>ONE PARTNER.<br />A CONNECTED BRAND.</span></div>
-        <div><h2>From first impression<br />to everyday <em>presence.</em></h2><p>We bring strategy and design together across the places people meet your brand — from the identity they recognize to the uniforms they wear.</p></div>
+        <div class="section-index"><span>01</span><span>ABOUT US</span></div>
+        <div><h2>Your one-stop<br /><em>brand design studio.</em></h2><p>We are a creative design studio based in Johor Bahru, Malaysia, specializing in brand identity, custom uniforms, and merchandise. We help businesses build clear, consistent, and recognizable brands through logo design, visual identity systems, and a wide range of brand applications.</p><a class="button button-dark intro-about-link" href="/about">About Us ${arrow}</a></div>
       </section>
 
       <section class="selected-work section-pad reveal">
@@ -364,7 +365,7 @@ function serviceDetailPage(service) {
         <div><span class="eyebrow">HOW WE CAN HELP</span><h2>${service.headline}</h2></div>
         <div><p>${service.detail}</p><h3>What we can create</h3><ul>${service.offerings.map(item => `<li>${item}</li>`).join('')}</ul><a class="button button-dark motion-cta" href="/contact">Discuss your ${service.title} project ${arrow}</a></div>
       </section>
-      <section class="service-related section-pad"><span class="eyebrow">EXPLORE MORE SERVICES</span><div>${related.map(item => `<a href="/services/${item.slug}"><span>${item.number}</span><strong>${item.title}</strong><i aria-hidden="true">↗</i></a>`).join('')}</div></section>
+      <section class="service-related section-pad"><span class="eyebrow">EXPLORE MORE SERVICES</span><div>${related.map(item => `<a href="/services/${item.slug}"><span>${item.number}</span><strong>${item.title}</strong><i aria-hidden="true">${arrowIcon}</i></a>`).join('')}</div></section>
       ${cta()}
     </main>${footer()}`;
 }
@@ -397,7 +398,13 @@ function projectPage(project) {
 function contact() {
   return `
     ${nav()}<main id="top" class="inner-page contact-page">
-      ${pageIntro('START A PROJECT', 'Let’s make<br /><em>it add up.</em>', 'Tell us what you’re building, what you need and where you’d like to take your brand.')}
+      <section class="page-intro contact-intro">
+        <div class="contact-intro-copy"><span class="eyebrow">START A PROJECT</span><h1>Let’s make<br /><em>it add up.</em></h1><p>Tell us what you’re building, what you need and where you’d like to take your brand.</p></div>
+        <div class="contact-location">
+          <iframe title="Abound Creation location — 4, Jalan Seroja 41, Johor Bahru" src="https://maps.google.com/maps?q=4%2C%20Jalan%20Seroja%2041%2C%20Taman%20Johor%20Jaya%2C%2081100%20Johor%20Bahru%2C%20Johor%2C%20Malaysia&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <div class="contact-location-caption"><p>4, Jalan Seroja 41,<br />Taman Johor Jaya, 81100 Johor Bahru,<br />Johor, Malaysia</p><a class="text-link" href="https://maps.google.com/?q=4+Jalan+Seroja+41+Taman+Johor+Jaya+Johor+Bahru" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></div>
+        </div>
+      </section>
       <section class="contact-layout section-pad">
         <form class="contact-form">
           <label>Your name<input name="name" autocomplete="name" placeholder="Name" required /></label>
@@ -439,6 +446,7 @@ const bannerDots = [...document.querySelectorAll('[data-banner-dot]')];
 const bannerCurrent = document.querySelector('[data-banner-current]');
 const bannerPause = document.querySelector('[data-banner-pause]');
 const bannerNext = document.querySelector('[data-banner-next]');
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
 if (bannerElements.length > 1) {
   let activeBanner = 0;
@@ -487,6 +495,13 @@ if (bannerElements.length > 1) {
     startBannerTimer();
   });
   document.addEventListener('visibilitychange', startBannerTimer);
+  motionPreference.addEventListener('change', event => {
+    paused = event.matches;
+    bannerPause.setAttribute('aria-pressed', String(paused));
+    bannerPause.setAttribute('aria-label', paused ? 'Resume slideshow' : 'Pause slideshow');
+    bannerPause.textContent = paused ? 'PLAY' : 'PAUSE';
+    startBannerTimer();
+  });
   bannerElements[0].inert = false;
   startBannerTimer();
 }
@@ -522,7 +537,59 @@ document.querySelectorAll('.portfolio-filter button').forEach(button => {
   });
 });
 
-if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+// Preserve inline emphasis and explicit line breaks while revealing each title line.
+document.querySelectorAll('main h1, main h2').forEach(heading => {
+  heading.classList.add('title-reveal');
+  heading.innerHTML = heading.innerHTML.split(/<br\s*\/?\s*>/i).map((line, index) =>
+    `<span class="title-line"><span style="--line-delay:${index * 90}ms">${line}</span></span>`
+  ).join('');
+});
+document.querySelectorAll('.project-grid').forEach(grid => {
+  grid.querySelectorAll('.project-card').forEach((card, index) => {
+    card.classList.add('card-reveal');
+    card.style.setProperty('--card-delay', `${(index % 3) * 90}ms`);
+  });
+});
+
+// Keep native details semantics; animate measured answer height in both directions.
+document.querySelectorAll('.qa-list details').forEach(details => {
+  const summary = details.querySelector('summary');
+  const answer = details.querySelector('p');
+  const panel = document.createElement('div');
+  panel.className = 'qa-answer';
+  answer.before(panel);
+  panel.append(answer);
+  let animation;
+  let expanded = details.open;
+  summary.addEventListener('click', event => {
+    event.preventDefault();
+    expanded = !expanded;
+    const from = panel.getBoundingClientRect().height;
+    animation?.cancel();
+    details.open = true;
+    details.classList.toggle('is-closing', !expanded);
+    if (motionPreference.matches || !panel.animate) {
+      details.open = expanded;
+      details.classList.remove('is-closing');
+      return;
+    }
+    animation = panel.animate([
+      { height: `${from}px`, opacity: from ? 1 : 0 },
+      { height: `${expanded ? panel.scrollHeight : 0}px`, opacity: expanded ? 1 : 0 }
+    ], { duration: 280, easing: 'cubic-bezier(.2,.7,.2,1)' });
+    animation.onfinish = () => {
+      details.open = expanded;
+      details.classList.remove('is-closing');
+      animation = null;
+    };
+  });
+});
+
+const revealSelector = '.reveal, .scroll-rise, .title-reveal, .card-reveal';
+motionPreference.addEventListener('change', event => {
+  if (event.matches) document.querySelectorAll(revealSelector).forEach(element => element.classList.add('is-visible'));
+});
+if ('IntersectionObserver' in window && !motionPreference.matches) {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -531,7 +598,7 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
       }
     });
   }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal, .scroll-rise').forEach(element => observer.observe(element));
+  document.querySelectorAll(revealSelector).forEach(element => observer.observe(element));
 } else {
-  document.querySelectorAll('.reveal, .scroll-rise').forEach(element => element.classList.add('is-visible'));
+  document.querySelectorAll(revealSelector).forEach(element => element.classList.add('is-visible'));
 }
