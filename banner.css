@@ -1,0 +1,15 @@
+/* Original supplied banner: no crop, overlay, decoration, or animation. */
+.hero{grid-template-columns:1fr;align-items:start;padding-bottom:5vw}.hero-art{width:100%;height:auto;min-height:0;aspect-ratio:3546/1313;margin-top:1vw;background:#df1820 url('/visuals/cover.jpg') center/contain no-repeat}.hero-art:before,.hero-art:after,.hero-art>*{display:none}
+
+/* The supplied poster remains complete and unaltered in the About section. */
+.about-art{height:auto;max-height:none;aspect-ratio:3000/3500;background:#171717 url('/visuals/business-card.jpg') center/contain no-repeat}.about-art:before,.about-art:after,.about-art>*{display:none}
+
+/* Every supplied visual is shown as its untouched source artwork. */
+.work-card .project-visual,.case-hero,.case-gallery .project-visual{background-size:contain;background-repeat:no-repeat;background-color:#171717}.work-card .project-visual:after{display:none}.work-card .project-visual>*{display:none}.work-card:hover .project-visual{transform:none}.case-hero:before,.case-hero:after,.case-hero>*{display:none}.case-gallery .project-visual:before,.case-gallery .project-visual:after,.case-gallery .project-visual>*{display:none}
+
+/* Only the homepage banner uses supplied imagery until new project visuals arrive. */
+.about-art,.work-card .project-visual,.case-hero,.case-gallery .project-visual{background-image:none!important}.about-art{background-color:#111}.work-card:nth-child(odd) .project-visual{background-color:#f1f1ef}.work-card:nth-child(even) .project-visual{background-color:#151515}.case-hero,.case-gallery .project-visual{background-color:#f1f1ef}
+
+/* Reference-led layout: generous black space, white typography and a single red information band. */
+.selected{background:#111;color:#fff}.selected .section-head p{color:#d6d6d6}.selected .project-meta{border-top:1px solid #3e3e3e;padding-top:16px}.selected .project-meta b{color:var(--red)}.selected .text-link{border-color:#fff}.work-grid:before{content:"ALL WORK";grid-column:1/-1;font-size:clamp(55px,10vw,170px);font-weight:900;letter-spacing:-.09em;line-height:.72;color:#fff;margin-bottom:4vw}.red-statement{background:#ef2a12}.red-statement:before{content:"ABOUND CREATION — ABOUND CREATION — ABOUND CREATION —";display:block;white-space:nowrap;overflow:hidden;font-size:clamp(18px,2.2vw,34px);letter-spacing:-.06em;margin-bottom:8vw;color:#fff}
+@media(max-width:700px){.hero{padding-bottom:22px}.hero-art{height:auto;min-height:0;aspect-ratio:3546/1313;margin-top:36px}.about-art{height:auto;aspect-ratio:3000/3500}}
