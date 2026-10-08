@@ -1,3 +1,4 @@
+import { portfolioProjects } from './src/data/portfolio-data.js';
 import { socialImage } from './images.js';
 
 export const SITE_URL = 'https://www.aboundcreation.com';
@@ -14,17 +15,17 @@ export const pages = [
   ['/services/merchandise', 'Custom Branded Merchandise | Abound Creation', 'Create branded apparel, office goods, drinkware, event merchandise and packaging with Abound Creation, a design studio based in Johor Bahru.', 'posting-03'],
   ['/services/photo-videography', 'Brand Photography & Video in Johor Bahru | Abound Creation', 'Explore product, corporate, brand, food and event photography, plus social media video content, with Abound Creation in Johor Bahru.', 'poster'],
   ['/services/marketing-services', 'Marketing & Content Services | Abound Creation', 'Plan your brand communication, social media content and campaign visuals with Abound Creation’s marketing and content services in Johor Bahru.', 'business-card'],
-  ['/portfolio/designed-to-wear', 'Designed to Wear: Uniform Design | Abound Creation', 'Discover Designed to Wear, an Abound Creation uniform and apparel design project connecting brand expression with clothing for teams.', 'uniform'],
-  ['/portfolio/more-than-a-brand', 'More Than a Brand: Visual Identity | Abound Creation', 'Explore More Than a Brand, an Abound Creation identity project bringing colour, materials and clear visual cues into a connected design system.', 'posting-02'],
-  ['/portfolio/everyday-objects', 'Everyday Objects: Branded Merchandise | Abound Creation', 'Discover Everyday Objects, an Abound Creation merchandise project bringing brand identity into useful, considered physical pieces.', 'posting-03'],
-].map(([path, title, description, visual]) => ({ path, title, description, image: socialImage(`/visuals/${visual}.jpg`) }));
+].map(([path, title, description, visual]) => ({ path, title, description, image: socialImage(`/visuals/${visual}.jpg`) })).concat(portfolioProjects.map(project => ({
+  path: `/portfolio/${project.slug}`,
+  title: project.seo?.title || `${project.title} | Abound Creation`,
+  description: project.seo?.description || project.description || `Explore ${project.title}, an Abound Creation project.`,
+  image: socialImage(project.cover.currentSrc),
+})));
 
 export const redirects = {
+  ...Object.fromEntries(portfolioProjects.map(project => [`/work/${project.slug}`, `/portfolio/${project.slug}`])),
   '/services': '/services/branding',
   '/work': '/portfolio',
-  '/work/designed-to-wear': '/portfolio/designed-to-wear',
-  '/work/more-than-a-brand': '/portfolio/more-than-a-brand',
-  '/work/everyday-objects': '/portfolio/everyday-objects',
 };
 
 export function redirectFor(path) {

@@ -16,6 +16,8 @@ assert features.check("webp"), "Pillow needs WebP support"
 sources = sorted((PUBLIC / "visuals").glob("*.jpg"))
 sources += sorted((PUBLIC / "client-logos").glob("*.png"))
 sources += [PUBLIC / "abound-logo.png"]
+sources += sorted(source for source in (PUBLIC / "images").rglob("*")
+                  if source.suffix.lower() in {".jpg", ".jpeg", ".png", ".webp"})
 manifest = {}
 for source in sources:
     relative = source.relative_to(PUBLIC)
@@ -25,7 +27,7 @@ for source in sources:
         width, height = image.size
         transparent = image.mode == "RGBA"
         image = image.convert("RGBA" if transparent else "RGB")
-        requested = [180, 360, 540] if "client-logos" in key else (
+        requested = [180, 360, 540] if "client-logos" in key or "/shared/clients/" in key else (
             [144, 288, 576, 960] if source.name == "abound-logo.png" else
             [480, 768, 1200, 1600, 2400, 3200]
         )

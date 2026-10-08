@@ -1,4 +1,5 @@
 import { renderPage } from './render.js';
+import { matchesPortfolioCategory } from './src/data/portfolio-data.js';
 
 // Keep the prerendered DOM intact; only render in development or on fallback pages.
 const app = document.querySelector('#app');
@@ -125,24 +126,84 @@ document.querySelectorAll('.portfolio-filter button').forEach(button => {
       item.setAttribute('aria-pressed', String(selected));
     });
     document.querySelectorAll('.portfolio-page .project-card').forEach(card => {
-      card.hidden = filter !== 'all' && card.dataset.category !== filter;
+      card.hidden = !matchesPortfolioCategory({ categories: card.dataset.categories.split(' ') }, filter);
+      if (!card.hidden) card.classList.add('is-visible');
     });
+    const empty = document.querySelector('.portfolio-empty');
+    if (empty) empty.hidden = !!document.querySelector('.portfolio-page .project-card:not([hidden])');
   });
 });
 
 // Preserve inline emphasis and explicit line breaks while revealing each title line.
-document.querySelectorAll('main h1, main h2:not(.section-label):not(.visually-hidden)').forEach(heading => {
+const editorialHeadings = '.intro-statement h1, .about-hero h1, .service-intro h1, .closing-cta h2'
+  + (document.querySelector('.portfolio-page') ? ', .page-intro h1' : '');
+document.querySelectorAll(editorialHeadings).forEach(heading => {
   heading.classList.add('title-reveal');
   heading.innerHTML = heading.innerHTML.split(/<br\s*\/?\s*>/i).map((line, index) =>
-    `<span class="title-line"><span style="--line-delay:${index * 90}ms">${line}</span></span>`
+    `<span class="title-line"><span style="--line-delay:${index * 100}ms">${line}</span></span>`
   ).join('');
 });
 document.querySelectorAll('.project-grid').forEach(grid => {
   grid.querySelectorAll('.project-card').forEach((card, index) => {
     card.classList.add('card-reveal');
-    card.style.setProperty('--card-delay', `${(index % 3) * 90}ms`);
+    card.style.setProperty('--card-delay', `${(index % 3) * 100}ms`);
   });
 });
+
+// Limit reveals to meaningful visual groups, rather than every text section.
+document.querySelectorAll('.qa-section, .qa-section .scroll-rise, .services-preview, .services-preview .scroll-rise, .clients-section, .approach').forEach(element => element.classList.remove('reveal', 'scroll-rise'));
+document.querySelectorAll('.about-belief, .sc-gallery, .sc-feature, .sc-photo-types').forEach(element => element.classList.add('scroll-rise'));
+document.querySelectorAll('.sc-cards').forEach(grid => {
+  [...grid.children].forEach((element, index) => {
+    element.classList.add('card-reveal');
+    element.style.setProperty('--card-delay', `${(index % 3) * 100}ms`);
+  });
+});
+document.querySelectorAll('.approach-step, .principle-list article, .sc-process li').forEach(element => {
+  const number = element.querySelector('.approach-number, .sc-number, :scope > span');
+  if (number) number.classList.add('number-reveal');
+});
+document.querySelectorAll('.service-list, .about-principles, .sc-section--process .page-container').forEach(element => element.classList.add('divider-reveal'));
+
+// One selected visual gets a small pointer response; touch and reduced motion stay static.
+const parallaxVisual = document.querySelector('.about-feature-image');
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+if (parallaxVisual) {
+  const image = parallaxVisual.querySelector('img');
+  let visible = false;
+  let frame = 0;
+  let x = 0;
+  let y = 0;
+  const reset = () => {
+    cancelAnimationFrame(frame);
+    frame = 0;
+    image.style.removeProperty('--pointer-x');
+    image.style.removeProperty('--pointer-y');
+    parallaxVisual.classList.remove('has-pointer-motion');
+  };
+  if ('IntersectionObserver' in window) {
+    const visibility = new IntersectionObserver(entries => {
+      visible = entries[0].isIntersecting;
+      if (!visible) reset();
+    });
+    visibility.observe(parallaxVisual);
+  }
+  parallaxVisual.addEventListener('pointermove', event => {
+    if (!visible || !finePointer.matches || motionPreference.matches || event.pointerType !== 'mouse') return;
+    const bounds = parallaxVisual.getBoundingClientRect();
+    x = Math.max(-6, Math.min(6, ((event.clientX - bounds.left) / bounds.width - .5) * 12));
+    y = Math.max(-6, Math.min(6, ((event.clientY - bounds.top) / bounds.height - .5) * 12));
+    if (!frame) frame = requestAnimationFrame(() => {
+      parallaxVisual.classList.add('has-pointer-motion');
+      image.style.setProperty('--pointer-x', `${x}px`);
+      image.style.setProperty('--pointer-y', `${y}px`);
+      frame = 0;
+    });
+  }, { passive: true });
+  parallaxVisual.addEventListener('pointerleave', reset);
+  finePointer.addEventListener('change', reset);
+  motionPreference.addEventListener('change', reset);
+}
 
 // Keep native details semantics; animate measured answer height in both directions.
 document.querySelectorAll('.qa-list details').forEach(details => {
@@ -178,7 +239,7 @@ document.querySelectorAll('.qa-list details').forEach(details => {
   });
 });
 
-const revealSelector = '.reveal, .scroll-rise, .title-reveal, .card-reveal';
+const revealSelector = '.reveal, .scroll-rise, .title-reveal, .card-reveal, .number-reveal, .divider-reveal';
 motionPreference.addEventListener('change', event => {
   if (event.matches) document.querySelectorAll(revealSelector).forEach(element => element.classList.add('is-visible'));
 });

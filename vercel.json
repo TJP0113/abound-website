@@ -18,27 +18,6 @@
       "status": 308
     },
     {
-      "src": "^/work/designed-to-wear/?$",
-      "headers": {
-        "Location": "/portfolio/designed-to-wear"
-      },
-      "status": 308
-    },
-    {
-      "src": "^/work/more-than-a-brand/?$",
-      "headers": {
-        "Location": "/portfolio/more-than-a-brand"
-      },
-      "status": 308
-    },
-    {
-      "src": "^/work/everyday-objects/?$",
-      "headers": {
-        "Location": "/portfolio/everyday-objects"
-      },
-      "status": 308
-    },
-    {
       "src": "^/index\\.html$",
       "headers": {
         "Location": "/"
@@ -149,6 +128,13 @@
       "dest": "/services/marketing-services/index.html"
     },
     {
+      "src": "^/work/designed-to-wear/?$",
+      "headers": {
+        "Location": "/portfolio/designed-to-wear"
+      },
+      "status": 308
+    },
+    {
       "src": "^/portfolio/designed-to-wear/(?:index\\.html)?$",
       "headers": {
         "Location": "/portfolio/designed-to-wear"
@@ -160,6 +146,13 @@
       "dest": "/portfolio/designed-to-wear/index.html"
     },
     {
+      "src": "^/work/more-than-a-brand/?$",
+      "headers": {
+        "Location": "/portfolio/more-than-a-brand"
+      },
+      "status": 308
+    },
+    {
       "src": "^/portfolio/more-than-a-brand/(?:index\\.html)?$",
       "headers": {
         "Location": "/portfolio/more-than-a-brand"
@@ -169,6 +162,13 @@
     {
       "src": "^/portfolio/more-than-a-brand$",
       "dest": "/portfolio/more-than-a-brand/index.html"
+    },
+    {
+      "src": "^/work/everyday-objects/?$",
+      "headers": {
+        "Location": "/portfolio/everyday-objects"
+      },
+      "status": 308
     },
     {
       "src": "^/portfolio/everyday-objects/(?:index\\.html)?$",

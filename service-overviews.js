@@ -1,3 +1,4 @@
+import { imageMap, imagePath, serviceImageKeys } from './src/data/image-map.js';
 import { outlineIcon } from './icons.js';
 // Concise bilingual service stories; imagery remains replaceable demo content.
 const stories = {
@@ -107,21 +108,22 @@ export function renderServiceOverview(service, { nav, footer, cta, responsiveIma
   const bi = (en, zh) => `<span lang="en">${en}</span><span class="sc-zh" lang="zh-Hans">${zh}</span>`;
   const notes = professionalNotes[service.slug];
   const expertise = `<aside class="sc-expertise" aria-labelledby="service-expertise"><h2 id="service-expertise" class="eyebrow">OUR EXPERTISE · 专业考量</h2><dl>${notes.expertise.map(([en,zh,detail,cn])=>`<div><dt>${outlineIcon(en)}<span>${bi(en,zh)}</span></dt><dd>${bi(detail,cn)}</dd></div>`).join('')}</dl></aside>`;
-  const assets = service.slug === 'uniform' ? ['uniform','uniform','uniform'] : ['poster','business-card','posting-03'];
-  const image = (asset, caption, size = '(max-width: 700px) 90vw, 28vw') => `<figure class="sc-image">${responsiveImage(`/visuals/${asset}.jpg`, `${service.title} visual placeholder`, { sizes: size })}${caption ? `<figcaption>${bi(...caption)}</figcaption>` : ''}</figure>`;
+  const slots = imageMap.services[serviceImageKeys[service.slug]];
+  const assets = slots.categories || slots.gallery || [];
+  const image = (asset, caption, size = '(max-width: 700px) 90vw, 28vw') => `<figure class="sc-image">${responsiveImage(imagePath(asset), `${service.title} visual placeholder`, { sizes: size })}${caption ? `<figcaption>${bi(...caption)}</figcaption>` : ''}</figure>`;
   const sections = story.sections.map(([title,zh,layout,en,cn,items],index) => {
     const header = `<header class="sc-heading"><span class="eyebrow">${service.title} / 0${index+1}</span><h2>${title}</h2><p class="sc-subtitle" lang="zh-Hans">${zh}</p><p>${bi(en,cn)}</p></header>`;
     let content;
     if (layout === 'cards') content = `<div class="sc-cards">${items.map((p,i)=>`<article>${image(assets[i])}<h3>${bi(...p)}</h3></article>`).join('')}</div>`;
     else if (layout === 'gallery' || layout === 'photo-gallery') content = `<div class="sc-gallery">${assets.map((asset,i)=>image(asset,items[i],layout==='photo-gallery'?'(max-width: 700px) 90vw, 44vw':undefined)).join('')}</div>`;
-    else if (layout === 'feature') content = `<div class="sc-feature">${image('posting-03',null,'(max-width: 900px) 90vw, 45vw')}<ul>${items.map(p=>`<li>${bi(...p)}</li>`).join('')}</ul></div>`;
+    else if (layout === 'feature') content = `<div class="sc-feature">${image(slots.customization,null,'(max-width: 900px) 90vw, 45vw')}<ul>${items.map(p=>`<li>${bi(...p)}</li>`).join('')}</ul></div>`;
     else if (layout === 'process') content = `<ol class="sc-process">${items.map((p,i)=>`<li><span class="sc-number">0${i+1}</span><h3>${bi(...p)}</h3></li>`).join('')}</ol>`;
     else if (layout === 'materials') content = `<div class="sc-materials">${items.map(p=>`<article><h3>${bi(p[0],p[1])}</h3><p>${bi(p[2],p[3])}</p></article>`).join('')}</div>`;
-    else if (layout === 'photo-types') content = `<div class="sc-photo-types">${image('cover',null,'(max-width: 900px) 90vw, 50vw')}<ul>${items.map(p=>`<li>${bi(...p)}</li>`).join('')}</ul></div>`;
+    else if (layout === 'photo-types') content = `<div class="sc-photo-types">${image(slots.types,null,'(max-width: 900px) 90vw, 50vw')}<ul>${items.map(p=>`<li>${bi(...p)}</li>`).join('')}</ul></div>`;
     else content = `<ul class="sc-items">${items.map((p,i)=>`<li><span class="sc-number">0${i+1}</span><h3>${bi(...p)}</h3></li>`).join('')}</ul>`;
     const composition = layout === 'direction' || layout === 'list' ? ` sc-${layout}` : '';
     return `<section class="sc-section sc-section--${layout}"><div class="page-container${composition}">${header}${content}</div></section>`;
   }).join('');
   const closing = cta().replace('<section class="closing-cta">', '<section class="closing-cta"><div class="page-container">').replace('</section>', '</div></section>');
-  return `${nav()}<main id="top" class="inner-page service-detail-page service-concise sc-page-${service.slug}"><section class="service-intro"><div class="page-container service-detail-split"><div class="service-detail-text"><span class="eyebrow">SERVICE ${service.number} · ABOUND CREATION</span><h1>${service.title}</h1><p class="sc-hero-copy">${bi(...story.intro)}</p>${expertise}<a class="button button-dark motion-cta" href="/contact">Start a Project · 开始项目 ${arrow}</a></div><figure class="service-detail-image">${responsiveImage(service.image,service.alt,{sizes:'(max-width: 900px) 90vw, 45vw',loading:'eager',priority:'high'})}<figcaption>ABOUND CREATION · ${service.title.toUpperCase()}</figcaption></figure></div></section>${sections}${closing}</main>${footer()}`;
+  return `${nav()}<main id="top" class="inner-page service-detail-page service-concise sc-page-${service.slug}"><section class="service-intro"><div class="page-container service-detail-split"><div class="service-detail-text"><span class="eyebrow">SERVICE ${service.number} · ABOUND CREATION</span><h1>${service.title}</h1><p class="sc-hero-copy">${bi(...story.intro)}</p>${expertise}<a class="button button-dark motion-cta" href="/contact">Start a Project · 开始项目 ${arrow}</a></div><figure class="service-detail-image">${responsiveImage(imagePath(slots.hero),service.alt,{sizes:'(max-width: 900px) 90vw, 45vw',loading:'eager',priority:'high'})}<figcaption>ABOUND CREATION · ${service.title.toUpperCase()}</figcaption></figure></div></section>${sections}${closing}</main>${footer()}`;
 }

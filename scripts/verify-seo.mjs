@@ -33,10 +33,10 @@ for (const page of pages) {
   assert.equal(route.dest, page.path === '/' ? '/index.html' : page.path + '/index.html');
   titles.add(page.title); descriptions.add(page.description);
 }
-assert.equal(titles.size, 13); assert.equal(descriptions.size, 13);
+assert.equal(titles.size, pages.length); assert.equal(descriptions.size, pages.length);
 assert.equal(await readFile('dist/sitemap.xml', 'utf8'), sitemapXml());
 assert.equal(await readFile('dist/robots.txt', 'utf8'), robotsTxt());
-assert.equal((sitemapXml().match(/<loc>/g) || []).length, 13);
+assert.equal((sitemapXml().match(/<loc>/g) || []).length, pages.length);
 const notFound = await readFile('dist/404.html', 'utf8');
 assert.ok(notFound.includes('Page not found.') && notFound.includes('noindex, follow'));
 assert.ok(!notFound.includes('rel="canonical"') && !notFound.includes('application/ld+json'));
@@ -84,4 +84,4 @@ try {
   const home = await (await fetch(origin)).text();
   for (const match of home.matchAll(/(?:src|href)="(\/assets\/[^" ]+)"/g)) assert.equal((await fetch(origin + match[1])).status, 200);
 } finally { await new Promise(resolve => server.close(resolve)); }
-console.log('PASS: 13 static routes; unique metadata, canonicals, OG/Twitter, JSON-LD, H1/hierarchy, links, sitemap/robots, assets, redirects and genuine HTTP 404s.');
+console.log(`PASS: ${pages.length} static routes; unique metadata, canonicals, OG/Twitter, JSON-LD, H1/hierarchy, links, sitemap/robots, assets, redirects and genuine HTTP 404s.`);

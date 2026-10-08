@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
+    "build": "node scripts/generate-portfolio-routes.mjs && vite build && node scripts/prerender.mjs",
     "preview": "node scripts/serve.mjs",
     "test:seo": "node scripts/verify-seo.mjs",
     "test:images": "node scripts/verify-images.mjs"

@@ -1,58 +1,36 @@
+import { portfolioProjects, portfolioFilters } from './src/data/portfolio-data.js';
+import { imageMap, imagePath, serviceImageKeys } from './src/data/image-map.js';
 import { responsiveImage } from './images.js';
 import { outlineIcon } from './icons.js';
 import { renderServiceOverview } from './service-overviews.js';
 import { bilingualDetails as serviceDetails, serviceIntroductions } from './service-bilingual.js';
 
-const projects = [
-  {
-    number: '01',
-    title: 'Designed to Wear',
-    category: 'UNIFORMS & TEAMWEAR',
-    detail: 'Custom uniforms and apparel design for brands and teams.',
-    image: '/visuals/uniform.jpg',
-    alt: 'Abound Creation custom uniforms and apparel design campaign',
-    slug: 'designed-to-wear',
-    type: 'uniforms',
-  },
-  {
-    number: '02',
-    title: 'More Than a Brand',
-    category: 'BRAND IDENTITY',
-    detail: 'A tactile identity system built from color, material and clear visual cues.',
-    image: '/visuals/posting-02.jpg',
-    alt: 'Printed brand identity color system and visual design',
-    slug: 'more-than-a-brand',
-    type: 'identity',
-  },
-  {
-    number: '03',
-    title: 'Everyday Objects',
-    category: 'MERCHANDISE',
-    detail: 'Bringing a brand into daily life through considered physical pieces.',
-    image: '/visuals/posting-03.jpg',
-    alt: 'Branded merchandise and physical brand assets',
-    slug: 'everyday-objects',
-    type: 'merchandise',
-  },
-];
+const projects = portfolioProjects.map((project, index) => ({
+  ...project,
+  number: String(index + 1).padStart(2, '0'),
+  category: project.categoryLabel.toUpperCase(),
+  detail: project.description || '',
+  image: imagePath(project.cover),
+  alt: project.cover.alt,
+}));
 
 const bannerSlides = [
   {
-    image: '/visuals/cover.jpg',
+    image: imagePath(imageMap.home.heroes[0]),
     alt: 'Abound Creation brand campaign in signature red',
     label: 'BRANDING · VISUAL IDENTITY',
     title: 'A brand world, built to last.',
     position: 'center',
   },
   {
-    image: '/visuals/uniform.jpg',
+    image: imagePath(imageMap.home.heroes[1]),
     alt: 'Custom uniform and apparel design campaign',
     label: 'UNIFORM · TEAMWEAR',
     title: 'Made to wear. Made to represent.',
     position: 'center 32%',
   },
   {
-    image: '/visuals/posting-03.jpg',
+    image: imagePath(imageMap.home.heroes[2]),
     alt: 'Merchandise and physical brand assets',
     label: 'MERCHANDISE · BRAND IN EVERYDAY LIFE',
     title: 'Good ideas belong out in the world.',
@@ -62,42 +40,42 @@ const bannerSlides = [
 
 const services = [
   {
-    number: '01', title: 'Branding', slug: 'branding', image: '/visuals/cover.jpg', alt: 'Brand identity direction by Abound Creation',
+    number: '01', title: 'Branding', slug: 'branding', image: imagePath(imageMap.services[serviceImageKeys['branding']].hero), alt: 'Brand identity direction by Abound Creation',
     description: 'Strategy and visual identity that give your brand a clear, recognizable point of view.',
     headline: 'Build a brand people recognize and remember.',
     detail: 'We shape the foundations of your brand, then bring them together in a visual identity with a consistent voice. From the first idea to the details customers see every day, each decision is made to feel distinct and connected.',
     offerings: ['Brand discovery and direction', 'Logo and visual identity systems', 'Colour, typography and graphic language', 'Brand guidelines and applications'],
   },
   {
-    number: '02', title: 'Uniform', slug: 'uniform', image: '/visuals/uniform.jpg', alt: 'Custom uniform and teamwear design',
+    number: '02', title: 'Uniform', slug: 'uniform', image: imagePath(imageMap.services[serviceImageKeys['uniform']].hero), alt: 'Custom uniform and teamwear design',
     description: 'Custom apparel designed around your people, purpose and brand character.',
     headline: 'Uniforms that bring your team together.',
     detail: 'We design custom uniforms and teamwear that balance comfort, function and brand expression. From silhouette and colour to logos and finishing details, the result feels right for the people who wear it and the work they do.',
     offerings: ['Uniform and teamwear concepts', 'Custom apparel graphics and placement', 'Colour and material direction', 'Production-ready design coordination'],
   },
   {
-    number: '03', title: 'Graphic', slug: 'graphic', image: '/visuals/posting-02.jpg', alt: 'Graphic design and brand collateral',
+    number: '03', title: 'Graphic', slug: 'graphic', image: imagePath(imageMap.services[serviceImageKeys['graphic']].hero), alt: 'Graphic design and brand collateral',
     description: 'Clear, considered graphic design for the messages and materials your brand puts into the world.',
     headline: 'Make every message feel unmistakably yours.',
     detail: 'We translate your brand into useful, well-crafted graphic pieces. A consistent visual language helps everything from a campaign to a printed piece feel like part of the same story.',
     offerings: ['Campaign and promotional graphics', 'Print and marketing collateral', 'Packaging and layout design', 'Digital graphics and branded templates'],
   },
   {
-    number: '04', title: 'Merchandise', slug: 'merchandise', image: '/visuals/posting-03.jpg', alt: 'Branded merchandise and everyday objects',
+    number: '04', title: 'Merchandise', slug: 'merchandise', image: imagePath(imageMap.services[serviceImageKeys['merchandise']].hero), alt: 'Branded merchandise and everyday objects',
     description: 'Useful, thoughtful brand goods made to become part of everyday life.',
     headline: 'Bring your brand into people’s everyday.',
     detail: 'We create merchandise that feels considered, useful and worth keeping. Each item is selected and designed to carry your identity naturally, whether it is for a team, an event or a customer community.',
     offerings: ['Merchandise concept and curation', 'Branded gifts and event items', 'Product graphics and packaging', 'Coordinated merchandise collections'],
   },
   {
-    number: '05', title: 'Photo & Videography', slug: 'photo-videography', image: '/visuals/poster.jpg', alt: 'Photography and videography for brand storytelling',
+    number: '05', title: 'Photo & Videography', slug: 'photo-videography', image: imagePath(imageMap.services[serviceImageKeys['photo-videography']].hero), alt: 'Photography and videography for brand storytelling',
     description: 'Photography and moving images that tell your brand story with intention.',
     headline: 'Show your brand as it really feels.',
     detail: 'We plan and create visual content that expresses your brand with clarity and character. From the creative direction to the final images, every frame supports the story you want people to remember.',
     offerings: ['Creative direction and shoot planning', 'Brand and product photography', 'Short-form video and campaign content', 'Image selection and visual consistency'],
   },
   {
-    number: '06', title: 'Marketing Services', slug: 'marketing-services', image: '/visuals/business-card.jpg', alt: 'Marketing campaign and branded communication materials',
+    number: '06', title: 'Marketing Services', slug: 'marketing-services', image: imagePath(imageMap.services[serviceImageKeys['marketing-services']].hero), alt: 'Marketing campaign and branded communication materials',
     description: 'Connected marketing design that helps your brand communicate clearly across channels.',
     headline: 'Turn a clear brand into a consistent presence.',
     detail: 'We help shape how your brand shows up in its marketing. Together, we can build a clear campaign direction and create the visual materials that carry it across your chosen channels, with every piece working from the same brand story.',
@@ -106,13 +84,13 @@ const services = [
 ];
 
 const clientLogos = [
-  ['client-01.png', 'Trustinsure'],
-  ['client-02.png', 'C.T & Co Chartered Accountants'],
-  ['client-03.png', 'Reka Furniture'],
-  ['client-04.png', 'Top Point Interior Design'],
-  ['client-05.png', 'Johindah Malim'],
-  ['client-06.png', 'Everwyn Realty Management'],
-  ['client-07.png', 'Stickjobs'],
+  [imagePath(imageMap.shared.clients['trustinsure']), 'Trustinsure'],
+  [imagePath(imageMap.shared.clients['ct-and-co']), 'C.T & Co Chartered Accountants'],
+  [imagePath(imageMap.shared.clients['reka-furniture']), 'Reka Furniture'],
+  [imagePath(imageMap.shared.clients['top-point-interior-design']), 'Top Point Interior Design'],
+  [imagePath(imageMap.shared.clients['johindah-malim']), 'Johindah Malim'],
+  [imagePath(imageMap.shared.clients['everwyn-realty-management']), 'Everwyn Realty Management'],
+  [imagePath(imageMap.shared.clients['stickjobs']), 'Stickjobs'],
 ];
 
 const fullImageSizes = 'calc(100vw - clamp(22px, 5.1vw, 82px) - clamp(22px, 5.1vw, 82px))';
@@ -145,7 +123,7 @@ function nav() {
   return `
     <header class="site-header">
       <a class="wordmark" href="/" aria-label="Abound Creation home">
-        ${responsiveImage('/abound-logo.png', 'Abound Creation', { sizes: '142px', loading: 'eager' })}
+        ${responsiveImage(imagePath(imageMap.shared.logo), 'Abound Creation', { sizes: '142px', loading: 'eager' })}
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span>Menu</span><i aria-hidden="true"></i>
@@ -167,7 +145,7 @@ function footer() {
     <footer class="site-footer">
       <div class="footer-top">
         <div class="footer-brand">
-          <a class="footer-mark" href="/" aria-label="Abound Creation home">${responsiveImage('/abound-logo.png', 'Abound Creation', { sizes: '(max-width: 700px) 105px, 118px' })}</a>
+          <a class="footer-mark" href="/" aria-label="Abound Creation home">${responsiveImage(imagePath(imageMap.shared.logo), 'Abound Creation', { sizes: '(max-width: 700px) 105px, 118px' })}</a>
         </div>
 
         <nav class="footer-nav" aria-label="Footer navigation">
@@ -208,7 +186,7 @@ function footer() {
 function projectCard(project, index = 0, aboveFold = false) {
   const href = `/portfolio/${project.slug}`;
   return `
-    <a class="project-card project-card-${index + 1}" href="${href}" data-category="${project.type}">
+    <a class="project-card project-card-${index + 1}" href="${href}" data-categories="${project.categories.join(' ')}">
       <div class="project-image">${responsiveImage(project.image, project.alt, { sizes: cardImageSizes, loading: aboveFold && index < 2 ? 'eager' : 'lazy', priority: aboveFold && index === 0 ? 'high' : 'auto' })}</div>
       <div class="project-caption">
         <span class="project-number">${project.number}</span>
@@ -231,7 +209,7 @@ function serviceRows(scrollReveal = false) {
 function clientLogoRow(duplicate = false) {
   return `
     <div class="client-logo-group" ${duplicate ? 'aria-hidden="true"' : ''}>
-      ${clientLogos.map(([src, name]) => `<div class="client-logo">${responsiveImage(`/client-logos/${src}`, duplicate ? '' : name, { sizes: '(max-width: 700px) 112px, clamp(120px, 14vw, 175px)' })}</div>`).join('')}
+      ${clientLogos.map(([src, name]) => `<div class="client-logo">${responsiveImage(src, duplicate ? '' : name, { sizes: '(max-width: 700px) 112px, clamp(120px, 14vw, 175px)' })}</div>`).join('')}
     </div>`;
 }
 
@@ -271,7 +249,7 @@ function home() {
         </section>
       </section>
 
-      <section class="intro-statement reveal">
+      <section class="intro-statement reveal has-texture texture-left" style="--atmosphere-texture:url('${imagePath(imageMap.home.texture)}')">
         <div class="section-index"><span>01</span><span>ABOUT US</span></div>
         <div><h1>Your one-stop<br /><em>brand design studio.</em></h1><p>We are a creative design studio based in Johor Bahru, Malaysia, specializing in brand identity, custom uniforms, and merchandise. We help businesses build clear, consistent, and recognizable brands through logo design, visual identity systems, and a wide range of brand applications.</p><a class="button button-dark intro-about-link" href="/about">About Us ${arrow}</a></div>
       </section>
@@ -338,7 +316,7 @@ function home() {
           <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="18" cy="22" r="11"/><path d="M18 16v7l5 3M23 9h10v10M33 9 23 19"/></svg></span><span class="approach-number">04</span><h3>Carry it through.</h3><p>We bring the design to life across the touchpoints your audience meets.</p></article>
         </div>
       </section>
-      ${cta()}
+      ${cta().replace('class="closing-cta"', `class="closing-cta has-texture texture-right" style="--atmosphere-texture:url('${imagePath(imageMap.home.texture)}')"`)}
     </main>
     ${footer()}`;
 }
@@ -362,8 +340,8 @@ function about() {
   const closing = cta().replace('<section class="closing-cta">', '<section class="closing-cta"><div class="page-container"><p class="about-closing-line">One idea. Many expressions. One connected brand.</p>').replace('</section>', '</div></section>');
   return `
     ${nav()}<main id="top" class="inner-page about-page">
-      <section class="about-hero"><div class="page-container"><span class="eyebrow">ABOUT ABOUND CREATION</span><h1>We see the<br /><em>whole picture.</em></h1><p>Abound Creation is a creative studio based in Johor Bahru, building connected brand experiences across identity, apparel, content and physical touchpoints.</p><p class="about-zh" lang="zh-Hans">Abound Creation 是一家位于新山的创意工作室，从品牌识别、服装、内容到实体应用，打造连贯而完整的品牌体验。</p></div></section>
-      <section class="about-belief"><div class="page-container about-belief-grid"><div class="about-feature-image">${responsiveImage('/visuals/poster.jpg', 'Abound Creation brand design and merchandise direction', { sizes: '(max-width: 900px) 90vw, 45vw', loading: 'eager', priority: 'high' })}</div><div><span class="eyebrow">OUR BELIEF</span><h2>Consistency makes<br />a brand <em>feel complete.</em></h2><p>A brand is experienced through more than a logo.<br />It appears in what people see, wear, hold and interact with.</p><p>We bring these touchpoints together so every part of the brand feels connected.</p><p class="about-zh" lang="zh-Hans">品牌不只存在于 Logo。<br />它存在于人们看见的、穿着的、拿在手上的，以及每一次与品牌接触的体验里。</p><p class="about-zh" lang="zh-Hans">我们将这些触点连接起来，让品牌从不同媒介到现实应用都保持一致。</p></div></div></section>
+      <section class="about-hero has-photo-overlay photo-overlay-right photo-overlay-brand" style="--atmosphere-photo:url('${imagePath(imageMap.about.heroOverlay)}')"><div class="page-container"><span class="eyebrow">ABOUT ABOUND CREATION</span><h1>We see the<br /><em>whole picture.</em></h1><p>Abound Creation is a creative studio based in Johor Bahru, building connected brand experiences across identity, apparel, content and physical touchpoints.</p><p class="about-zh" lang="zh-Hans">Abound Creation 是一家位于新山的创意工作室，从品牌识别、服装、内容到实体应用，打造连贯而完整的品牌体验。</p></div></section>
+      <section class="about-belief"><div class="page-container about-belief-grid"><div class="about-feature-image">${responsiveImage(imagePath(imageMap.about.belief), 'Abound Creation brand design and merchandise direction', { sizes: '(max-width: 900px) 90vw, 45vw', loading: 'eager', priority: 'high' })}</div><div><span class="eyebrow">OUR BELIEF</span><h2>Consistency makes<br />a brand <em>feel complete.</em></h2><p>A brand is experienced through more than a logo.<br />It appears in what people see, wear, hold and interact with.</p><p>We bring these touchpoints together so every part of the brand feels connected.</p><p class="about-zh" lang="zh-Hans">品牌不只存在于 Logo。<br />它存在于人们看见的、穿着的、拿在手上的，以及每一次与品牌接触的体验里。</p><p class="about-zh" lang="zh-Hans">我们将这些触点连接起来，让品牌从不同媒介到现实应用都保持一致。</p></div></div></section>
       <section class="about-connect"><div class="page-container"><h2 class="eyebrow">WHAT WE CONNECT</h2><div class="about-connect-grid">${connections.map(([title,zh,en,cn,icon])=>`<article>${outlineIcon(icon)}<h3>${title}</h3><span class="about-zh" lang="zh-Hans">${zh}</span><p>${en}</p><p class="about-zh" lang="zh-Hans">${cn}</p></article>`).join('')}</div></div></section>
       <section class="about-principles"><div class="page-container about-principles-grid"><h2 class="eyebrow">OUR POINT OF VIEW</h2><div class="principle-list">${principles.map(([n,title,copy,icon])=>`<article><span>${n}</span><h3>${outlineIcon(icon)}<span>${title}</span></h3><p>${copy}</p></article>`).join('')}</div></div></section>
       ${closing}
@@ -413,11 +391,8 @@ function portfolio() {
     ${nav()}<main id="top" class="inner-page">
       ${pageIntro('SELECTED WORK · 2024—2026', 'Ideas, carried<br /><em>all the way through.</em>', 'A look at brand identity, uniforms and merchandise — each designed to work as part of a bigger picture.')}
       <section class="portfolio-page section-pad"><h2 class="visually-hidden">Selected projects</h2><div class="portfolio-filter" aria-label="Filter projects">
-        <button type="button" class="is-selected" data-filter="all" aria-pressed="true">ALL WORK</button>
-        <button type="button" data-filter="identity" aria-pressed="false">IDENTITY</button>
-        <button type="button" data-filter="uniforms" aria-pressed="false">UNIFORMS</button>
-        <button type="button" data-filter="merchandise" aria-pressed="false">MERCHANDISE</button>
-      </div><div class="project-grid">${projects.map((project, index) => projectCard(project, index, true)).join('')}</div></section>
+        ${portfolioFilters.map(({ key, label }) => `<button type="button" class="${key === 'all' ? 'is-selected' : ''}" data-filter="${key}" aria-pressed="${key === 'all'}">${label}</button>`).join('')}
+      </div><div class="project-grid">${projects.map((project, index) => projectCard(project, index, true)).join('')}</div><p class="portfolio-empty" role="status" hidden>No projects in this category yet.</p></section>
       ${cta()}
     </main>${footer()}`;
 }
@@ -426,7 +401,7 @@ function projectPage(project) {
   return `
     ${nav()}<main id="top" class="case-page">
       <section class="case-intro"><span class="eyebrow">${project.number} · ${project.category}</span><h1>${project.title}<em>.</em></h1><p>${project.detail}</p></section>
-      <figure class="case-image">${responsiveImage(project.image, project.alt, { sizes: fullImageSizes, loading: 'eager', priority: 'high' })}<figcaption>ABOUND CREATION · ${project.category}</figcaption></figure>
+      ${project.images.map((entry, index) => `<figure class="case-image">${responsiveImage(imagePath(entry), entry.alt || project.alt, { sizes: fullImageSizes, loading: index === 0 ? 'eager' : 'lazy', priority: index === 0 ? 'high' : 'auto' })}<figcaption>ABOUND CREATION · ${project.category}</figcaption></figure>`).join('')}
       <section class="case-description section-pad"><span class="eyebrow">THE IDEA</span><div><h2>Design that carries<br />through to <em>real life.</em></h2><p>${project.detail} A considered visual direction connects the idea to the things people see, use and wear every day.</p><a class="text-link" href="/portfolio">Back to all work ${arrow}</a></div></section>
       <section class="next-project section-pad"><span class="eyebrow">EXPLORE ANOTHER PROJECT</span><div class="project-grid">${projects.filter(item => item.slug !== project.slug).slice(0, 2).map((project, index) => projectCard(project, index)).join('')}</div></section>
       ${cta()}
