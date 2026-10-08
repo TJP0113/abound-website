@@ -1,1 +1,16 @@
-{"name":"abound-creation","version":"1.0.0","private":true,"scripts":{"dev":"vite","build":"vite build","preview":"vite preview"},"devDependencies":{"vite":"^4.5.3"}}
+{
+  "name": "abound-creation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/prerender.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test:seo": "node scripts/verify-seo.mjs",
+    "test:images": "node scripts/verify-images.mjs"
+  },
+  "devDependencies": {
+    "vite": "^4.5.3"
+  },
+  "type": "module"
+}

@@ -1,9 +1,198 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "^/services/?$",
+      "headers": {
+        "Location": "/services/branding"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/work/?$",
+      "headers": {
+        "Location": "/portfolio"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/work/designed-to-wear/?$",
+      "headers": {
+        "Location": "/portfolio/designed-to-wear"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/work/more-than-a-brand/?$",
+      "headers": {
+        "Location": "/portfolio/more-than-a-brand"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/work/everyday-objects/?$",
+      "headers": {
+        "Location": "/portfolio/everyday-objects"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/index\\.html$",
+      "headers": {
+        "Location": "/"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "^/about/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/about"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/about$",
+      "dest": "/about/index.html"
+    },
+    {
+      "src": "^/portfolio/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/portfolio"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio$",
+      "dest": "/portfolio/index.html"
+    },
+    {
+      "src": "^/contact/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/contact"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/contact$",
+      "dest": "/contact/index.html"
+    },
+    {
+      "src": "^/services/branding/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/services/branding"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/services/branding$",
+      "dest": "/services/branding/index.html"
+    },
+    {
+      "src": "^/services/uniform/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/services/uniform"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/services/uniform$",
+      "dest": "/services/uniform/index.html"
+    },
+    {
+      "src": "^/services/graphic/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/services/graphic"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/services/graphic$",
+      "dest": "/services/graphic/index.html"
+    },
+    {
+      "src": "^/services/merchandise/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/services/merchandise"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/services/merchandise$",
+      "dest": "/services/merchandise/index.html"
+    },
+    {
+      "src": "^/services/photo-videography/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/services/photo-videography"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/services/photo-videography$",
+      "dest": "/services/photo-videography/index.html"
+    },
+    {
+      "src": "^/services/marketing-services/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/services/marketing-services"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/services/marketing-services$",
+      "dest": "/services/marketing-services/index.html"
+    },
+    {
+      "src": "^/portfolio/designed-to-wear/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/portfolio/designed-to-wear"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear$",
+      "dest": "/portfolio/designed-to-wear/index.html"
+    },
+    {
+      "src": "^/portfolio/more-than-a-brand/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/portfolio/more-than-a-brand"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/more-than-a-brand$",
+      "dest": "/portfolio/more-than-a-brand/index.html"
+    },
+    {
+      "src": "^/portfolio/everyday-objects/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/portfolio/everyday-objects"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/everyday-objects$",
+      "dest": "/portfolio/everyday-objects/index.html"
+    },
+    {
+      "src": "^/404\\.html$",
+      "dest": "/404.html",
+      "status": 404
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "^/.*$",
+      "dest": "/404.html",
+      "status": 404
     }
   ]
 }
