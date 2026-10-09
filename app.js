@@ -1,5 +1,10 @@
 import { renderPage } from './render.js';
 import { matchesPortfolioCategory } from './src/data/portfolio-data.js';
+import { createElement } from 'react';
+import { createRoot } from 'react-dom/client';
+import GradientText from './src/components/GradientText.jsx';
+import ClickSpark from './src/components/ClickSpark.jsx';
+import Particles from './src/components/Particles.jsx';
 
 // Keep the prerendered DOM intact; only render in development or on fallback pages.
 const app = document.querySelector('#app');
@@ -8,13 +13,81 @@ if (!app.dataset.prerendered) app.innerHTML = renderPage(window.location.pathnam
 
 
 const servicesDropdown = document.querySelector('.services-dropdown');
+const desktopServices = window.matchMedia('(min-width: 901px) and (hover: hover) and (pointer: fine)');
+const reducedServicesMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let servicesCloseTimer;
+let servicesAnimation;
+let servicesHovered = false;
+const servicesPanel = servicesDropdown.querySelector('.services-dropdown-panel');
+const cancelServicesClose = () => {
+  window.clearTimeout(servicesCloseTimer);
+  servicesAnimation?.cancel();
+  servicesAnimation = null;
+};
+const openServices = () => {
+  cancelServicesClose();
+  if (servicesDropdown.open) return;
+  servicesDropdown.open = true;
+  if (desktopServices.matches && !reducedServicesMotion.matches) {
+    servicesAnimation = servicesPanel.animate([
+      { opacity: 0, transform: 'translateY(-4px)' },
+      { opacity: 1, transform: 'translateY(0)' },
+    ], { duration: 160, easing: 'ease-out' });
+  }
+};
+const closeServices = (animate = false) => {
+  cancelServicesClose();
+  if (!servicesDropdown.open) return;
+  if (animate && desktopServices.matches && !reducedServicesMotion.matches) {
+    servicesAnimation = servicesPanel.animate([
+      { opacity: 1, transform: 'translateY(0)' },
+      { opacity: 0, transform: 'translateY(-4px)' },
+    ], { duration: 140, easing: 'ease-in' });
+    servicesAnimation.onfinish = () => {
+      servicesDropdown.open = false;
+      servicesAnimation = null;
+    };
+  } else servicesDropdown.open = false;
+};
+const scheduleServicesClose = () => {
+  window.clearTimeout(servicesCloseTimer);
+  servicesCloseTimer = window.setTimeout(() => {
+    if (!servicesHovered && !servicesDropdown.contains(document.activeElement)) closeServices(true);
+  }, 150);
+};
+servicesDropdown.addEventListener('pointerenter', event => {
+  if (!desktopServices.matches || event.pointerType === 'touch') return;
+  servicesHovered = true;
+  openServices();
+});
+servicesDropdown.addEventListener('pointerleave', () => {
+  servicesHovered = false;
+  if (desktopServices.matches) scheduleServicesClose();
+});
+servicesDropdown.addEventListener('focusin', () => {
+  if (desktopServices.matches) openServices();
+});
+servicesDropdown.addEventListener('focusout', () => {
+  if (desktopServices.matches) scheduleServicesClose();
+});
+servicesDropdown.querySelector('summary').addEventListener('click', event => {
+  // Hover already opened it; retain native keyboard and touch activation.
+  if (desktopServices.matches && event.detail > 0 && event.pointerType !== 'touch') {
+    event.preventDefault();
+    openServices();
+  }
+});
+desktopServices.addEventListener('change', () => {
+  servicesHovered = false;
+  closeServices();
+});
 document.addEventListener('click', event => {
-  if (!servicesDropdown.contains(event.target)) servicesDropdown.open = false;
+  if (!servicesDropdown.contains(event.target)) closeServices();
 });
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && servicesDropdown.open) {
-    servicesDropdown.open = false;
     servicesDropdown.querySelector('summary').focus();
+    closeServices();
   }
 });
 
@@ -34,6 +107,16 @@ menuToggle?.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', String(open));
   menuToggle.querySelector('span').textContent = open ? 'Close' : 'Menu';
 });
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('.specular-cta').forEach(button => {
+    button.addEventListener('pointermove', event => {
+      const bounds = button.getBoundingClientRect();
+      button.style.setProperty('--specular-x', `${event.clientX - bounds.left}px`);
+      button.style.setProperty('--specular-y', `${event.clientY - bounds.top}px`);
+    }, { passive: true });
+  });
+}
 
 const bannerElements = [...document.querySelectorAll('[data-banner-slide]')];
 const bannerDots = [...document.querySelectorAll('[data-banner-dot]')];
@@ -257,3 +340,55 @@ if ('IntersectionObserver' in window && !motionPreference.matches) {
 } else {
   document.querySelectorAll(revealSelector).forEach(element => element.classList.add('is-visible'));
 }
+
+const aboundGradientColors = ['#650000', '#A90000', '#EB1D25', '#FF4848', '#A90000'];
+document.querySelectorAll('.brand-gradient').forEach(element => {
+  const headline = element.textContent;
+  createRoot(element).render(createElement(GradientText, {
+    className: 'headline-gradient',
+    colors: aboundGradientColors,
+    animationSpeed: 6,
+    showBorder: false,
+    direction: 'horizontal',
+    pauseOnHover: false,
+    yoyo: true,
+  }, headline));
+});
+
+const particleSurface = document.querySelector('main');
+if (particleSurface) {
+  const particleMount = document.createElement('div');
+  particleMount.className = 'white-particles-mount';
+  particleMount.setAttribute('aria-hidden', 'true');
+  particleSurface.classList.add('page-particles-surface');
+  particleSurface.prepend(particleMount);
+  const particlesRoot = createRoot(particleMount);
+  particlesRoot.render(createElement(Particles, {
+    particleColors: ['#eb1d25'],
+    particleCount: 220,
+    particleSpread: 6,
+    speed: 0.06,
+    particleBaseSize: 70,
+    sizeRandomness: 0.8,
+    moveParticlesOnHover: false,
+    alphaParticles: true,
+    disableRotation: false,
+    pixelRatio: 1,
+    randomSeed: 20261009,
+    fillContainer: true,
+  }));
+}
+
+const clickSparkMount = document.createElement('div');
+clickSparkMount.className = 'click-spark-root';
+clickSparkMount.setAttribute('aria-hidden', 'true');
+document.body.append(clickSparkMount);
+createRoot(clickSparkMount).render(createElement(ClickSpark, {
+  sparkColor: '#eb1d25',
+  sparkSize: 10,
+  sparkRadius: 40,
+  sparkCount: 10,
+  duration: 400,
+  easing: 'ease-out',
+  extraScale: 1,
+}));

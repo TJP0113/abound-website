@@ -128,22 +128,148 @@
       "dest": "/services/marketing-services/index.html"
     },
     {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/designed-to-wear(?:/(?:index\\.html)?)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
       "src": "^/work/designed-to-wear/?$",
       "headers": {
-        "Location": "/portfolio/designed-to-wear"
+        "Location": "/portfolio/professional-auto-detailing-shop"
       },
       "status": 308
     },
     {
-      "src": "^/portfolio/designed-to-wear/(?:index\\.html)?$",
+      "src": "^/work/professional-auto-detailing-shop/?$",
       "headers": {
-        "Location": "/portfolio/designed-to-wear"
+        "Location": "/portfolio/professional-auto-detailing-shop"
       },
       "status": 308
     },
     {
-      "src": "^/portfolio/designed-to-wear$",
-      "dest": "/portfolio/designed-to-wear/index.html"
+      "src": "^/portfolio/professional-auto-detailing-shop/(?:index\\.html)?$",
+      "headers": {
+        "Location": "/portfolio/professional-auto-detailing-shop"
+      },
+      "status": 308
+    },
+    {
+      "src": "^/portfolio/professional-auto-detailing-shop$",
+      "dest": "/portfolio/professional-auto-detailing-shop/index.html"
     },
     {
       "src": "^/work/more-than-a-brand/?$",

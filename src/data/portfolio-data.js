@@ -23,16 +23,17 @@ const asset = (folder, slug, purpose, currentSrc, alt) => {
 
 export const portfolioProjects = [
   {
-    slug: 'designed-to-wear', title: 'Designed to Wear', year: null,
+    slug: 'professional-auto-detailing-shop', title: 'Professional Auto Detailing Shop', year: 2026,
+    aliases: ['designed-to-wear'],
     categories: ['uniforms'], categoryLabel: 'Uniforms',
-    cover: asset('uniforms', 'designed-to-wear', 'cover', '/visuals/uniform.jpg', 'Abound Creation custom uniforms and apparel design campaign'),
-    images: [asset('uniforms', 'designed-to-wear', 'detail-01', '/visuals/uniform.jpg', 'Abound Creation custom uniforms and apparel design campaign')],
-    services: ['/services/uniform'], client: null, location: null,
+    cover: asset('uniforms', 'professional-auto-detailing-shop', 'cover', '/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover.webp', 'STICKJOBS black polo uniforms with yellow branding, shown from the front and back'),
+    images: [asset('uniforms', 'professional-auto-detailing-shop', 'detail-01', '/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover.webp', 'STICKJOBS black polo uniforms with yellow branding, shown from the front and back')],
+    services: ['/services/uniform'], client: 'STICKJOBS', location: 'Johor Bahru',
     description: 'Custom uniforms and apparel design for brands and teams.',
     // Existing metadata preserved; optional for new projects, which get generated defaults.
     seo: {
-      title: 'Designed to Wear: Uniform Design | Abound Creation',
-      description: 'Discover Designed to Wear, an Abound Creation uniform and apparel design project connecting brand expression with clothing for teams.',
+      title: 'STICKJOBS Uniform Design | Abound Creation',
+      description: 'Explore custom uniforms for STICKJOBS, a professional auto detailing shop in Johor Bahru. A 2026 uniform and apparel design project by Abound Creation.',
     },
   },
   {

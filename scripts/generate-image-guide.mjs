@@ -6,7 +6,7 @@ const rows = allImageSlots().map(entry => {
   return `### ${entry.page} — ${entry.section} — ${entry.filename}
 
 - Target: \`${entry.plannedSrc}\`
-- Current source: \`${entry.currentSrc}\` (still live; target is reserved)
+- Current source: \`${entry.currentSrc}\` (${entry.currentSrc === entry.plannedSrc ? 'approved file at target path' : 'live source; target path reserved'})
 - Purpose: ${entry.purpose}
 - Recommended ratio: ${profile.ratio}
 - Recommended dimensions: ${profile.dimensions}
@@ -20,7 +20,7 @@ await writeFile('IMAGE-GUIDE.md', `# Abound Creation image guide
 
 Generated from \`src/data/image-map.js\` by \`node scripts/generate-image-guide.mjs\`.
 The map is the editable source of truth; regenerate this guide after changing slot metadata.
-No existing images have been moved, renamed or replaced.
+Legacy image files remain untouched. Approved replacements are added under their own project paths.
 
 ## Organization
 
@@ -30,7 +30,7 @@ and portfolio/{branding,uniforms,merchandise,graphic,photo-videography}/{project
 Portfolio entries come from src/data/portfolio-data.js, re-exported through the image map.
 Earlier direct project directories are retained as empty reservations; no files were moved.
 An additional shared/clients folder reserves shared brand and customer logo assets.
-Directories currently contain only .gitkeep files; target image files do not exist yet.
+Unused directories contain .gitkeep reservations. Supplied project images use the planned folders.
 Contact has no photograph slots: its location display is a Google Maps iframe.
 
 ## Naming and replacement workflow
@@ -63,7 +63,8 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 - Six demo JPGs: business-card 3000×3500; cover 3546×1313; poster 2480×3508;
   posting-02, posting-03 and uniform each 4500×5625.
 - Seven client PNGs, one Abound logo PNG (1425×525), favicon PNG and one line texture SVG.
-- 61 responsive WebP derivatives and six sharing JPGs currently exist; these are necessary size
+- 61 legacy responsive WebP derivatives and six legacy sharing JPGs are preserved; new approved
+  project sources add their own generated derivatives. These are necessary size
   variants, not accidental duplicates. image-manifest.js is generated; do not edit it manually.
 - Demo photos are intentionally reused across slots. Uniform types currently all show uniform.jpg.
   No exact duplicate originals were found among the audited visual/client sources.

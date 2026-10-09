@@ -5,6 +5,10 @@ import { portfolioProjects } from '../src/data/portfolio-data.js';
 const config = JSON.parse(await readFile('vercel.json', 'utf8'));
 config.routes = config.routes.filter(rule => !rule.src || !/^\^\/(portfolio|work)\/[a-z0-9-]+(?:\/|\$)/.test(rule.src));
 const projectRules = portfolioProjects.flatMap(project => [
+  ...(project.aliases || []).flatMap(alias => [
+    { src: `^/portfolio/${alias}(?:/(?:index\\.html)?)?$`, headers: { Location: `/portfolio/${project.slug}` }, status: 308 },
+    { src: `^/work/${alias}/?$`, headers: { Location: `/portfolio/${project.slug}` }, status: 308 },
+  ]),
   { src: `^/work/${project.slug}/?$`, headers: { Location: `/portfolio/${project.slug}` }, status: 308 },
   { src: `^/portfolio/${project.slug}/(?:index\\.html)?$`, headers: { Location: `/portfolio/${project.slug}` }, status: 308 },
   { src: `^/portfolio/${project.slug}$`, dest: `/portfolio/${project.slug}/index.html` },

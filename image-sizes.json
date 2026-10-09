@@ -502,5 +502,40 @@
       }
     ],
     "default": "/optimized/abound-logo-288.webp"
+  },
+  "/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover.webp": {
+    "width": 1536,
+    "height": 1024,
+    "originalBytes": 1099254,
+    "originalSha256": "ef2c18982f3a06195cf7c114b455e6ecc7fa906773e3f5b45f980d8d13d6e0d9",
+    "variants": [
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-480.webp",
+        "width": 480,
+        "height": 320,
+        "bytes": 18038
+      },
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-768.webp",
+        "width": 768,
+        "height": 512,
+        "bytes": 35052
+      },
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-1200.webp",
+        "width": 1200,
+        "height": 800,
+        "bytes": 67590
+      },
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-1536.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 95810
+      }
+    ],
+    "default": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-1200.webp",
+    "share": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-share.jpg",
+    "shareBytes": 137788
   }
 }

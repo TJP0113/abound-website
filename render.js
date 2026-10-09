@@ -130,9 +130,9 @@ function nav() {
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation">
         ${links}
-        <a class="nav-whatsapp motion-cta" href="https://wa.me/60196609102" target="_blank" rel="noreferrer">Start a project ${arrow}</a>
+        <a class="nav-whatsapp motion-cta specular-cta" href="https://wa.me/60196609102" target="_blank" rel="noreferrer"><span class="specular-label">Start a project</span> ${arrow}</a>
       </nav>
-      <a class="header-cta motion-cta" href="https://wa.me/60196609102" target="_blank" rel="noreferrer" aria-label="Start a project on WhatsApp">Start a project ${arrow}</a>
+      <a class="header-cta motion-cta specular-cta" href="https://wa.me/60196609102" target="_blank" rel="noreferrer" aria-label="Start a project on WhatsApp"><span class="specular-label">Start a project</span> ${arrow}</a>
     </header>`;
 }
 
@@ -162,9 +162,9 @@ function footer() {
         <div class="footer-reach">
         <section class="footer-contact" aria-labelledby="footer-contact-title">
           <h2 id="footer-contact-title">Contact</h2>
-          <a href="mailto:aboundcreation@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m4 7 8 6 8-6"/></svg><span>aboundcreation@gmail.com</span></a>
-          <a href="tel:+60196609102"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 19-660 9102</span></a>
-          <a href="tel:+60137766128"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 13-776 6128</span></a>
+          <a href="mailto:aboundcreation@gmail.com" aria-label="Email Abound Creation at aboundcreation@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m4 7 8 6 8-6"/></svg><span>aboundcreation@gmail.com</span></a>
+          <a href="https://wa.me/60196609102" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp with +60 19-660 9102 (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 19-660 9102</span></a>
+          <a href="https://wa.me/60137766128" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp with +60 13-776 6128 (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3a15 15 0 0 1-7-7l3-2-2-5Z"/></svg><span>+60 13-776 6128</span></a>
           <a class="footer-address" href="https://maps.google.com/?q=4+Jalan+Seroja+41+Taman+Johor+Jaya+Johor+Bahru" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.2"/></svg><span><span class="address-line">4, Jalan Seroja 41, Taman Johor Jaya,</span><span class="address-line">81100 Johor Bahru, Johor, Malaysia</span></span></a>
         </section>
         <div class="footer-socials">
@@ -209,7 +209,7 @@ function serviceRows(scrollReveal = false) {
 function clientLogoRow(duplicate = false) {
   return `
     <div class="client-logo-group" ${duplicate ? 'aria-hidden="true"' : ''}>
-      ${clientLogos.map(([src, name]) => `<div class="client-logo">${responsiveImage(src, duplicate ? '' : name, { sizes: '(max-width: 700px) 112px, clamp(120px, 14vw, 175px)' })}</div>`).join('')}
+      ${clientLogos.map(([src, name], index) => `<div class="client-logo client-logo--${index + 1}">${responsiveImage(src, duplicate ? '' : name, { sizes: '(max-width: 680px) 136px, 170px' })}</div>`).join('')}
     </div>`;
 }
 
@@ -218,7 +218,7 @@ function cta() {
     <section class="closing-cta">
       <span class="eyebrow">HAVE A PROJECT IN MIND?</span>
       <div class="closing-content">
-        <h2>Let’s make your<br /><em>brand add up.</em></h2>
+        <h2>Let’s make your<br /><em class="brand-gradient">brand add up.</em></h2>
         <div><p>Tell us what you’re building. We’ll help bring every part of it together.</p><a class="text-link motion-cta" href="/contact">Start a conversation ${arrow}</a></div>
       </div>
     </section>`;
@@ -232,7 +232,7 @@ function home() {
         <section class="hero-slideshow" aria-label="Featured Abound Creation work">
           <div class="banner-track">
             ${bannerSlides.map((slide, index) => `
-              <a class="banner-slide ${index === 0 ? 'is-active' : ''}" href="${index === 1 ? '/portfolio/designed-to-wear' : '/portfolio'}" aria-label="${slide.label}: ${slide.title}" aria-hidden="${index !== 0}" data-banner-slide>
+              <a class="banner-slide ${index === 0 ? 'is-active' : ''}" href="${index === 1 ? '/portfolio/' + projects[0].slug : '/portfolio'}" aria-label="${slide.label}: ${slide.title}" aria-hidden="${index !== 0}" data-banner-slide>
                 ${responsiveImage(slide.image, slide.alt, { sizes: '100vw', style: `object-position:${slide.position}`, loading: index === 0 ? 'eager' : 'lazy', priority: index === 0 ? 'high' : 'auto' })}
                 <span class="banner-shade"></span>
                 <span class="banner-copy"><small>${slide.label}</small><strong>${slide.title}</strong></span>
@@ -251,12 +251,12 @@ function home() {
 
       <section class="intro-statement reveal has-texture texture-left" style="--atmosphere-texture:url('${imagePath(imageMap.home.texture)}')">
         <div class="section-index"><span>01</span><span>ABOUT US</span></div>
-        <div><h1>Your one-stop<br /><em>brand design studio.</em></h1><p>We are a creative design studio based in Johor Bahru, Malaysia, specializing in brand identity, custom uniforms, and merchandise. We help businesses build clear, consistent, and recognizable brands through logo design, visual identity systems, and a wide range of brand applications.</p><a class="button button-dark intro-about-link" href="/about">About Us ${arrow}</a></div>
+        <div><h1>Your one-stop<br /><em class="brand-gradient">brand design studio.</em></h1><p>We are a creative design studio based in Johor Bahru, Malaysia, specializing in brand identity, custom uniforms, and merchandise. We help businesses build clear, consistent, and recognizable brands through logo design, visual identity systems, and a wide range of brand applications.</p><a class="button button-dark intro-about-link" href="/about">About Us ${arrow}</a></div>
       </section>
 
       <section class="selected-work section-pad reveal">
         <div class="section-heading">
-          <div><span class="eyebrow">SELECTED WORK</span><h2>One idea.<br /><em>Many expressions.</em></h2></div>
+          <div><span class="eyebrow">SELECTED WORK</span><h2>One idea.<br /><em class="brand-gradient">Many expressions.</em></h2></div>
           <a class="text-link" href="/portfolio">View all projects ${arrow}</a>
         </div>
         <div class="project-grid project-grid-featured">${projects.slice(0, 2).map((project, index) => projectCard(project, index)).join('')}</div>
@@ -264,7 +264,7 @@ function home() {
 
       <section class="services-preview reveal">
         <div class="services-heading scroll-rise">
-          <div><span class="eyebrow">WHAT WE DO</span><h2>Everything your<br />brand needs to <em>show up.</em></h2></div>
+          <div><span class="eyebrow">WHAT WE DO</span><h2>Everything your<br />brand needs to <em class="brand-gradient">show up.</em></h2></div>
           <p>One considered design approach, carried through every detail and touchpoint.</p>
         </div>
         <div class="service-list">${serviceRows(true)}</div>
@@ -284,7 +284,7 @@ function home() {
 
       <section class="qa-section section-pad reveal" aria-labelledby="qa-title">
         <div class="qa-heading scroll-rise">
-          <div><span class="eyebrow">Q&A</span><h2 id="qa-title">A few things<br />you might <em>wonder.</em></h2></div>
+          <div><span class="eyebrow">Q&A</span><h2 id="qa-title">A few things<br />you might <em class="brand-gradient">wonder.</em></h2></div>
           <p>Some quick answers about working with Abound Creation.</p>
         </div>
         <div class="qa-list">
@@ -307,16 +307,18 @@ function home() {
         </div>
       </section>
 
-      <section class="approach reveal">
-        <div class="approach-top"><h2 class="eyebrow section-label">HOW WE WORK</h2><a class="text-link" href="/about">Our approach ${arrow}</a></div>
-        <div class="approach-steps">
-          <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 9.5h26v17H20l-8 6v-6H7z"/><path d="M13 16h14M13 21h9"/></svg></span><span class="approach-number">01</span><h3>Listen closely.</h3><p>We start with your goals, your people and what makes your brand distinct.</p></article>
-          <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5v9M20 26v9M5 20h9M26 20h9M9.4 9.4l6.3 6.3m8.6 8.6 6.3 6.3m0-21.2-6.3 6.3m-8.6 8.6-6.3 6.3"/><circle cx="20" cy="20" r="4"/></svg></span><span class="approach-number">02</span><h3>Find the idea.</h3><p>We uncover the central thought that gives every design decision direction.</p></article>
-          <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="11" height="11"/><rect x="22" y="7" width="11" height="11"/><rect x="7" y="22" width="11" height="11"/><rect x="22" y="22" width="11" height="11"/></svg></span><span class="approach-number">03</span><h3>Design the system.</h3><p>We build a consistent visual language across identity, uniforms and more.</p></article>
-          <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="18" cy="22" r="11"/><path d="M18 16v7l5 3M23 9h10v10M33 9 23 19"/></svg></span><span class="approach-number">04</span><h3>Carry it through.</h3><p>We bring the design to life across the touchpoints your audience meets.</p></article>
-        </div>
-      </section>
-      ${cta().replace('class="closing-cta"', `class="closing-cta has-texture texture-right" style="--atmosphere-texture:url('${imagePath(imageMap.home.texture)}')"`)}
+      <div class="approach-cta-particle-wrap" data-shared-particles>
+        <section class="approach reveal">
+          <div class="approach-top"><h2 class="eyebrow section-label">HOW WE WORK</h2><a class="text-link" href="/about">Our approach ${arrow}</a></div>
+          <div class="approach-steps">
+            <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M7 9.5h26v17H20l-8 6v-6H7z"/><path d="M13 16h14M13 21h9"/></svg></span><span class="approach-number">01</span><h3>Listen closely.</h3><p>We start with your goals, your people and what makes your brand distinct.</p></article>
+            <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5v9M20 26v9M5 20h9M26 20h9M9.4 9.4l6.3 6.3m8.6 8.6 6.3 6.3m0-21.2-6.3 6.3m-8.6 8.6-6.3 6.3"/><circle cx="20" cy="20" r="4"/></svg></span><span class="approach-number">02</span><h3>Find the idea.</h3><p>We uncover the central thought that gives every design decision direction.</p></article>
+            <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="7" width="11" height="11"/><rect x="22" y="7" width="11" height="11"/><rect x="7" y="22" width="11" height="11"/><rect x="22" y="22" width="11" height="11"/></svg></span><span class="approach-number">03</span><h3>Design the system.</h3><p>We build a consistent visual language across identity, uniforms and more.</p></article>
+            <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="18" cy="22" r="11"/><path d="M18 16v7l5 3M23 9h10v10M33 9 23 19"/></svg></span><span class="approach-number">04</span><h3>Carry it through.</h3><p>We bring the design to life across the touchpoints your audience meets.</p></article>
+          </div>
+        </section>
+        ${cta().replace('class="closing-cta"', `class="closing-cta has-texture texture-right" style="--atmosphere-texture:url('${imagePath(imageMap.home.texture)}')"`)}
+      </div>
     </main>
     ${footer()}`;
 }
@@ -340,8 +342,8 @@ function about() {
   const closing = cta().replace('<section class="closing-cta">', '<section class="closing-cta"><div class="page-container"><p class="about-closing-line">One idea. Many expressions. One connected brand.</p>').replace('</section>', '</div></section>');
   return `
     ${nav()}<main id="top" class="inner-page about-page">
-      <section class="about-hero has-photo-overlay photo-overlay-right photo-overlay-brand" style="--atmosphere-photo:url('${imagePath(imageMap.about.heroOverlay)}')"><div class="page-container"><span class="eyebrow">ABOUT ABOUND CREATION</span><h1>We see the<br /><em>whole picture.</em></h1><p>Abound Creation is a creative studio based in Johor Bahru, building connected brand experiences across identity, apparel, content and physical touchpoints.</p><p class="about-zh" lang="zh-Hans">Abound Creation 是一家位于新山的创意工作室，从品牌识别、服装、内容到实体应用，打造连贯而完整的品牌体验。</p></div></section>
-      <section class="about-belief"><div class="page-container about-belief-grid"><div class="about-feature-image">${responsiveImage(imagePath(imageMap.about.belief), 'Abound Creation brand design and merchandise direction', { sizes: '(max-width: 900px) 90vw, 45vw', loading: 'eager', priority: 'high' })}</div><div><span class="eyebrow">OUR BELIEF</span><h2>Consistency makes<br />a brand <em>feel complete.</em></h2><p>A brand is experienced through more than a logo.<br />It appears in what people see, wear, hold and interact with.</p><p>We bring these touchpoints together so every part of the brand feels connected.</p><p class="about-zh" lang="zh-Hans">品牌不只存在于 Logo。<br />它存在于人们看见的、穿着的、拿在手上的，以及每一次与品牌接触的体验里。</p><p class="about-zh" lang="zh-Hans">我们将这些触点连接起来，让品牌从不同媒介到现实应用都保持一致。</p></div></div></section>
+      <section class="about-hero has-photo-overlay photo-overlay-right photo-overlay-brand" style="--atmosphere-photo:url('${imagePath(imageMap.about.heroOverlay)}')"><div class="page-container"><span class="eyebrow">ABOUT ABOUND CREATION</span><h1>We see the<br /><em class="brand-gradient">whole picture.</em></h1><p>Abound Creation is a creative studio based in Johor Bahru, building connected brand experiences across identity, apparel, content and physical touchpoints.</p><p class="about-zh" lang="zh-Hans">Abound Creation 是一家位于新山的创意工作室，从品牌识别、服装、内容到实体应用，打造连贯而完整的品牌体验。</p></div></section>
+      <section class="about-belief"><div class="page-container about-belief-grid"><div class="about-feature-image">${responsiveImage(imagePath(imageMap.about.belief), 'Abound Creation brand design and merchandise direction', { sizes: '(max-width: 900px) 90vw, 45vw', loading: 'eager', priority: 'high' })}</div><div><span class="eyebrow">OUR BELIEF</span><h2>Consistency makes<br />a brand <em class="brand-gradient">feel complete.</em></h2><p>A brand is experienced through more than a logo.<br />It appears in what people see, wear, hold and interact with.</p><p>We bring these touchpoints together so every part of the brand feels connected.</p><p class="about-zh" lang="zh-Hans">品牌不只存在于 Logo。<br />它存在于人们看见的、穿着的、拿在手上的，以及每一次与品牌接触的体验里。</p><p class="about-zh" lang="zh-Hans">我们将这些触点连接起来，让品牌从不同媒介到现实应用都保持一致。</p></div></div></section>
       <section class="about-connect"><div class="page-container"><h2 class="eyebrow">WHAT WE CONNECT</h2><div class="about-connect-grid">${connections.map(([title,zh,en,cn,icon])=>`<article>${outlineIcon(icon)}<h3>${title}</h3><span class="about-zh" lang="zh-Hans">${zh}</span><p>${en}</p><p class="about-zh" lang="zh-Hans">${cn}</p></article>`).join('')}</div></div></section>
       <section class="about-principles"><div class="page-container about-principles-grid"><h2 class="eyebrow">OUR POINT OF VIEW</h2><div class="principle-list">${principles.map(([n,title,copy,icon])=>`<article><span>${n}</span><h3>${outlineIcon(icon)}<span>${title}</span></h3><p>${copy}</p></article>`).join('')}</div></div></section>
       ${closing}
@@ -389,7 +391,7 @@ function serviceDetailPage(service) {
 function portfolio() {
   return `
     ${nav()}<main id="top" class="inner-page">
-      ${pageIntro('SELECTED WORK · 2024—2026', 'Ideas, carried<br /><em>all the way through.</em>', 'A look at brand identity, uniforms and merchandise — each designed to work as part of a bigger picture.')}
+      ${pageIntro('SELECTED WORK · 2024—2026', 'Ideas, carried<br /><em class="brand-gradient">all the way through.</em>', 'A look at brand identity, uniforms and merchandise — each designed to work as part of a bigger picture.')}
       <section class="portfolio-page section-pad"><h2 class="visually-hidden">Selected projects</h2><div class="portfolio-filter" aria-label="Filter projects">
         ${portfolioFilters.map(({ key, label }) => `<button type="button" class="${key === 'all' ? 'is-selected' : ''}" data-filter="${key}" aria-pressed="${key === 'all'}">${label}</button>`).join('')}
       </div><div class="project-grid">${projects.map((project, index) => projectCard(project, index, true)).join('')}</div><p class="portfolio-empty" role="status" hidden>No projects in this category yet.</p></section>
@@ -400,9 +402,9 @@ function portfolio() {
 function projectPage(project) {
   return `
     ${nav()}<main id="top" class="case-page">
-      <section class="case-intro"><span class="eyebrow">${project.number} · ${project.category}</span><h1>${project.title}<em>.</em></h1><p>${project.detail}</p></section>
+      <section class="case-intro"><span class="eyebrow">${[project.number, project.category, project.client, project.year, project.location].filter(Boolean).join(' · ')}</span><h1>${project.title}<em>.</em></h1><p>${project.detail}</p></section>
       ${project.images.map((entry, index) => `<figure class="case-image">${responsiveImage(imagePath(entry), entry.alt || project.alt, { sizes: fullImageSizes, loading: index === 0 ? 'eager' : 'lazy', priority: index === 0 ? 'high' : 'auto' })}<figcaption>ABOUND CREATION · ${project.category}</figcaption></figure>`).join('')}
-      <section class="case-description section-pad"><span class="eyebrow">THE IDEA</span><div><h2>Design that carries<br />through to <em>real life.</em></h2><p>${project.detail} A considered visual direction connects the idea to the things people see, use and wear every day.</p><a class="text-link" href="/portfolio">Back to all work ${arrow}</a></div></section>
+      <section class="case-description section-pad"><span class="eyebrow">THE IDEA</span><div><h2>Design that carries<br />through to <em class="brand-gradient">real life.</em></h2><p>${project.detail} A considered visual direction connects the idea to the things people see, use and wear every day.</p><a class="text-link" href="/portfolio">Back to all work ${arrow}</a></div></section>
       <section class="next-project section-pad"><span class="eyebrow">EXPLORE ANOTHER PROJECT</span><div class="project-grid">${projects.filter(item => item.slug !== project.slug).slice(0, 2).map((project, index) => projectCard(project, index)).join('')}</div></section>
       ${cta()}
     </main>${footer()}`;
@@ -412,7 +414,7 @@ function contact() {
   return `
     ${nav()}<main id="top" class="inner-page contact-page">
       <section class="page-intro contact-intro">
-        <div class="contact-intro-copy"><span class="eyebrow">START A PROJECT</span><h1>Let’s make<br /><em>it add up.</em></h1><p>Tell us what you’re building, what you need and where you’d like to take your brand.</p></div>
+        <div class="contact-intro-copy"><span class="eyebrow">START A PROJECT</span><h1>Let’s make<br /><em class="brand-gradient">it add up.</em></h1><p>Tell us what you’re building, what you need and where you’d like to take your brand.</p></div>
         <div class="contact-location">
           <iframe title="Abound Creation location — 4, Jalan Seroja 41, Johor Bahru" src="https://maps.google.com/maps?q=4%2C%20Jalan%20Seroja%2041%2C%20Taman%20Johor%20Jaya%2C%2081100%20Johor%20Bahru%2C%20Johor%2C%20Malaysia&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           <div class="contact-location-caption"><p>4, Jalan Seroja 41,<br />Taman Johor Jaya, 81100 Johor Bahru,<br />Johor, Malaysia</p><a class="text-link" href="https://maps.google.com/?q=4+Jalan+Seroja+41+Taman+Johor+Jaya+Johor+Bahru" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></div>
@@ -425,7 +427,7 @@ function contact() {
           <label>Email<input name="email" type="email" autocomplete="email" placeholder="you@company.com" required /></label>
           <label>What do you need?<select name="service"><option value="">Choose a service</option>${services.map(service => `<option>${service.title}</option>`).join('')}<option>Not sure yet</option></select></label>
           <label class="form-wide">Tell us a little about it<textarea name="details" rows="4" placeholder="A few details about your project"></textarea></label>
-          <button class="button button-dark motion-cta" type="submit">Send an enquiry ${arrow}</button>
+          <button class="button button-dark motion-cta specular-cta" type="submit"><span class="specular-label">Send an enquiry</span> ${arrow}</button>
           <p class="form-message" aria-live="polite"></p>
         </form>
         <aside class="contact-aside"><span class="eyebrow">OR REACH US DIRECTLY</span><a href="mailto:aboundcreation@gmail.com">aboundcreation@gmail.com ${arrow}</a><a href="tel:+60196609102">+60 19-660 9102 ${arrow}</a><a href="https://www.instagram.com/aboundcreation?igsi=M2VwbXg1ZDQwcXB2" target="_blank" rel="noreferrer">Instagram ${arrow}</a><p>Johor Bahru<br />Johor, Malaysia</p>${workingHours()}</aside>

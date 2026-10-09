@@ -2,7 +2,7 @@
 
 Generated from `src/data/image-map.js` by `node scripts/generate-image-guide.mjs`.
 The map is the editable source of truth; regenerate this guide after changing slot metadata.
-No existing images have been moved, renamed or replaced.
+Legacy image files remain untouched. Approved replacements are added under their own project paths.
 
 ## Organization
 
@@ -12,7 +12,7 @@ and portfolio/{branding,uniforms,merchandise,graphic,photo-videography}/{project
 Portfolio entries come from src/data/portfolio-data.js, re-exported through the image map.
 Earlier direct project directories are retained as empty reservations; no files were moved.
 An additional shared/clients folder reserves shared brand and customer logo assets.
-Directories currently contain only .gitkeep files; target image files do not exist yet.
+Unused directories contain .gitkeep reservations. Supplied project images use the planned folders.
 Contact has no photograph slots: its location display is a Google Maps iframe.
 
 ## Naming and replacement workflow
@@ -45,7 +45,8 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 - Six demo JPGs: business-card 3000×3500; cover 3546×1313; poster 2480×3508;
   posting-02, posting-03 and uniform each 4500×5625.
 - Seven client PNGs, one Abound logo PNG (1425×525), favicon PNG and one line texture SVG.
-- 61 responsive WebP derivatives and six sharing JPGs currently exist; these are necessary size
+- 61 legacy responsive WebP derivatives and six legacy sharing JPGs are preserved; new approved
+  project sources add their own generated derivatives. These are necessary size
   variants, not accidental duplicates. image-manifest.js is generated; do not edit it manually.
 - Demo photos are intentionally reused across slots. Uniform types currently all show uniform.jpg.
   No exact duplicate originals were found among the audited visual/client sources.
@@ -66,7 +67,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### home — Hero slide 01 — home-hero-01.webp
 
 - Target: `/images/home/home-hero-01.webp`
-- Current source: `/visuals/cover.jpg` (still live; target is reserved)
+- Current source: `/visuals/cover.jpg` (live source; target path reserved)
 - Purpose: Brand identity banner
 - Recommended ratio: 2:1 recommended; current desktop container 2.35:1, mobile 4:5
 - Recommended dimensions: 2400 × 1200
@@ -77,7 +78,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### home — Hero slide 02 — home-hero-02.webp
 
 - Target: `/images/home/home-hero-02.webp`
-- Current source: `/visuals/uniform.jpg` (still live; target is reserved)
+- Current source: `/visuals/uniform.jpg` (live source; target path reserved)
 - Purpose: Uniform banner
 - Recommended ratio: 2:1 recommended; current desktop container 2.35:1, mobile 4:5
 - Recommended dimensions: 2400 × 1200
@@ -88,7 +89,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### home — Hero slide 03 — home-hero-03.webp
 
 - Target: `/images/home/home-hero-03.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Merchandise banner
 - Recommended ratio: 2:1 recommended; current desktop container 2.35:1, mobile 4:5
 - Recommended dimensions: 2400 × 1200
@@ -99,7 +100,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### home — About Us statement + Closing CTA — home-atmosphere-lines.svg
 
 - Target: `/images/home/home-atmosphere-lines.svg`
-- Current source: `/visuals/atmosphere-lines.svg` (still live; target is reserved)
+- Current source: `/visuals/atmosphere-lines.svg` (live source; target path reserved)
 - Purpose: Shared light geometric texture
 - Recommended ratio: 1:1 vector tile
 - Recommended dimensions: 640 × 640 SVG viewBox
@@ -110,7 +111,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### about — Hero background — about-hero-overlay-01.webp
 
 - Target: `/images/about/about-hero-overlay-01.webp`
-- Current source: `/optimized/visuals/business-card-768.webp` (still live; target is reserved)
+- Current source: `/optimized/visuals/business-card-768.webp` (live source; target path reserved)
 - Purpose: Temporary grayscale brand photograph
 - Recommended ratio: 3:4 recommended
 - Recommended dimensions: 1200 × 1600
@@ -121,7 +122,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### about — Our Belief — about-belief-01.webp
 
 - Target: `/images/about/about-belief-01.webp`
-- Current source: `/visuals/poster.jpg` (still live; target is reserved)
+- Current source: `/visuals/poster.jpg` (live source; target path reserved)
 - Purpose: Supporting brand visual
 - Recommended ratio: Natural image ratio; 4:5 recommended
 - Recommended dimensions: 1600 × 2000
@@ -132,7 +133,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/branding — Intro — branding-hero-01.webp
 
 - Target: `/images/services/branding/branding-hero-01.webp`
-- Current source: `/visuals/cover.jpg` (still live; target is reserved)
+- Current source: `/visuals/cover.jpg` (live source; target path reserved)
 - Purpose: Service introduction
 - Recommended ratio: 4:3 recommended; desktop container is height-led
 - Recommended dimensions: 1600 × 1200
@@ -143,7 +144,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/branding — Brand Identity & Applications — branding-identity-01.webp
 
 - Target: `/images/services/branding/branding-identity-01.webp`
-- Current source: `/visuals/poster.jpg` (still live; target is reserved)
+- Current source: `/visuals/poster.jpg` (live source; target path reserved)
 - Purpose: Logo, colour and typography
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -154,7 +155,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/branding — Brand Identity & Applications — branding-application-print-01.webp
 
 - Target: `/images/services/branding/branding-application-print-01.webp`
-- Current source: `/visuals/business-card.jpg` (still live; target is reserved)
+- Current source: `/visuals/business-card.jpg` (live source; target path reserved)
 - Purpose: Packaging and printed materials
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -165,7 +166,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/branding — Brand Identity & Applications — branding-application-uniform-digital-01.webp
 
 - Target: `/images/services/branding/branding-application-uniform-digital-01.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Uniforms and digital touchpoints
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -176,7 +177,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/uniform — Intro — uniform-hero-01.webp
 
 - Target: `/images/services/uniform/uniform-hero-01.webp`
-- Current source: `/visuals/uniform.jpg` (still live; target is reserved)
+- Current source: `/visuals/uniform.jpg` (live source; target path reserved)
 - Purpose: Service introduction
 - Recommended ratio: 4:3 recommended; desktop container is height-led
 - Recommended dimensions: 1600 × 1200
@@ -187,7 +188,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/uniform — Uniform Types — uniform-type-corporate-01.webp
 
 - Target: `/images/services/uniform/uniform-type-corporate-01.webp`
-- Current source: `/visuals/uniform.jpg` (still live; target is reserved)
+- Current source: `/visuals/uniform.jpg` (live source; target path reserved)
 - Purpose: Corporate and workwear
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -198,7 +199,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/uniform — Uniform Types — uniform-type-everyday-event-01.webp
 
 - Target: `/images/services/uniform/uniform-type-everyday-event-01.webp`
-- Current source: `/visuals/uniform.jpg` (still live; target is reserved)
+- Current source: `/visuals/uniform.jpg` (live source; target path reserved)
 - Purpose: Everyday and events
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -209,7 +210,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/uniform — Uniform Types — uniform-type-sport-01.webp
 
 - Target: `/images/services/uniform/uniform-type-sport-01.webp`
-- Current source: `/visuals/uniform.jpg` (still live; target is reserved)
+- Current source: `/visuals/uniform.jpg` (live source; target path reserved)
 - Purpose: Sport and teamwear
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -220,7 +221,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/merchandise — Intro — merchandise-hero-01.webp
 
 - Target: `/images/services/merchandise/merchandise-hero-01.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Service introduction
 - Recommended ratio: 4:3 recommended; desktop container is height-led
 - Recommended dimensions: 1600 × 1200
@@ -231,7 +232,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/merchandise — Product Categories — merchandise-category-apparel-bags-01.webp
 
 - Target: `/images/services/merchandise/merchandise-category-apparel-bags-01.webp`
-- Current source: `/visuals/poster.jpg` (still live; target is reserved)
+- Current source: `/visuals/poster.jpg` (live source; target path reserved)
 - Purpose: Apparel and bags
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -242,7 +243,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/merchandise — Product Categories — merchandise-category-drinkware-01.webp
 
 - Target: `/images/services/merchandise/merchandise-category-drinkware-01.webp`
-- Current source: `/visuals/business-card.jpg` (still live; target is reserved)
+- Current source: `/visuals/business-card.jpg` (live source; target path reserved)
 - Purpose: Drinkware and lifestyle
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -253,7 +254,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/merchandise — Product Categories — merchandise-category-office-event-01.webp
 
 - Target: `/images/services/merchandise/merchandise-category-office-event-01.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Office and event essentials
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -264,7 +265,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/merchandise — Customization Options — merchandise-customization-01.webp
 
 - Target: `/images/services/merchandise/merchandise-customization-01.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Branding and packaging possibilities
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -275,7 +276,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/marketing — Intro — marketing-hero-01.webp
 
 - Target: `/images/services/marketing/marketing-hero-01.webp`
-- Current source: `/visuals/business-card.jpg` (still live; target is reserved)
+- Current source: `/visuals/business-card.jpg` (live source; target path reserved)
 - Purpose: Service introduction
 - Recommended ratio: 4:3 recommended; desktop container is height-led
 - Recommended dimensions: 1600 × 1200
@@ -286,7 +287,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/graphic-design — Intro — graphic-design-hero-01.webp
 
 - Target: `/images/services/graphic-design/graphic-design-hero-01.webp`
-- Current source: `/visuals/posting-02.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-02.jpg` (live source; target path reserved)
 - Purpose: Service introduction
 - Recommended ratio: 4:3 recommended; desktop container is height-led
 - Recommended dimensions: 1600 × 1200
@@ -297,7 +298,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/graphic-design — Selected Applications — graphic-design-application-social-01.webp
 
 - Target: `/images/services/graphic-design/graphic-design-application-social-01.webp`
-- Current source: `/visuals/poster.jpg` (still live; target is reserved)
+- Current source: `/visuals/poster.jpg` (live source; target path reserved)
 - Purpose: Posters and social content
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -308,7 +309,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/graphic-design — Selected Applications — graphic-design-application-corporate-packaging-01.webp
 
 - Target: `/images/services/graphic-design/graphic-design-application-corporate-packaging-01.webp`
-- Current source: `/visuals/business-card.jpg` (still live; target is reserved)
+- Current source: `/visuals/business-card.jpg` (live source; target path reserved)
 - Purpose: Business materials and packaging
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -319,7 +320,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/graphic-design — Selected Applications — graphic-design-application-event-01.webp
 
 - Target: `/images/services/graphic-design/graphic-design-application-event-01.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Signage and event graphics
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -330,7 +331,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/photography — Intro — photography-hero-01.webp
 
 - Target: `/images/services/photography/photography-hero-01.webp`
-- Current source: `/visuals/poster.jpg` (still live; target is reserved)
+- Current source: `/visuals/poster.jpg` (live source; target path reserved)
 - Purpose: Service introduction
 - Recommended ratio: 4:3 recommended; desktop container is height-led
 - Recommended dimensions: 1600 × 1200
@@ -341,7 +342,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/photography — Photography Types — photography-types-01.webp
 
 - Target: `/images/services/photography/photography-types-01.webp`
-- Current source: `/visuals/cover.jpg` (still live; target is reserved)
+- Current source: `/visuals/cover.jpg` (live source; target path reserved)
 - Purpose: Brand, product, people and event photography
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -352,7 +353,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/photography — Visual Gallery — photography-gallery-01.webp
 
 - Target: `/images/services/photography/photography-gallery-01.webp`
-- Current source: `/visuals/poster.jpg` (still live; target is reserved)
+- Current source: `/visuals/poster.jpg` (live source; target path reserved)
 - Purpose: Gallery visual 1
 - Recommended ratio: Desktop 2:1; mobile 4:3
 - Recommended dimensions: 2400 × 1200
@@ -363,7 +364,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/photography — Visual Gallery — photography-gallery-02.webp
 
 - Target: `/images/services/photography/photography-gallery-02.webp`
-- Current source: `/visuals/business-card.jpg` (still live; target is reserved)
+- Current source: `/visuals/business-card.jpg` (live source; target path reserved)
 - Purpose: Gallery visual 2
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -374,7 +375,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### services/photography — Visual Gallery — photography-gallery-03.webp
 
 - Target: `/images/services/photography/photography-gallery-03.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Gallery visual 3
 - Recommended ratio: 4:3
 - Recommended dimensions: 1600 × 1200
@@ -382,10 +383,10 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 - Grayscale / multiply / opacity: None
 - Desktop / mobile: Desktop modular columns; mobile single column; lazy loading.
 
-### portfolio/uniforms/designed-to-wear — Portfolio grid / Home Featured Work — designed-to-wear-cover.webp
+### portfolio/uniforms/professional-auto-detailing-shop — Portfolio grid / Home Featured Work — professional-auto-detailing-shop-cover.webp
 
-- Target: `/images/portfolio/uniforms/designed-to-wear/designed-to-wear-cover.webp`
-- Current source: `/visuals/uniform.jpg` (still live; target is reserved)
+- Target: `/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover.webp`
+- Current source: `/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover.webp` (approved file at target path)
 - Purpose: Project preview
 - Recommended ratio: 3:2
 - Recommended dimensions: 1800 × 1200
@@ -393,10 +394,10 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 - Grayscale / multiply / opacity: None
 - Desktop / mobile: Shared by Portfolio grid and Home Featured Work where selected; hover scale 1.03.
 
-### portfolio/uniforms/designed-to-wear — Project detail — designed-to-wear-detail-01.webp
+### portfolio/uniforms/professional-auto-detailing-shop — Project detail — professional-auto-detailing-shop-detail-01.webp
 
-- Target: `/images/portfolio/uniforms/designed-to-wear/designed-to-wear-detail-01.webp`
-- Current source: `/visuals/uniform.jpg` (still live; target is reserved)
+- Target: `/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-detail-01.webp`
+- Current source: `/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover.webp` (live source; target path reserved)
 - Purpose: Project feature visual
 - Recommended ratio: Natural image ratio; 3:2 recommended for future photography
 - Recommended dimensions: 2400 × 1600
@@ -407,7 +408,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### portfolio/branding/more-than-a-brand — Portfolio grid / Home Featured Work — more-than-a-brand-cover.webp
 
 - Target: `/images/portfolio/branding/more-than-a-brand/more-than-a-brand-cover.webp`
-- Current source: `/visuals/posting-02.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-02.jpg` (live source; target path reserved)
 - Purpose: Project preview
 - Recommended ratio: 3:2
 - Recommended dimensions: 1800 × 1200
@@ -418,7 +419,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### portfolio/branding/more-than-a-brand — Project detail — more-than-a-brand-detail-01.webp
 
 - Target: `/images/portfolio/branding/more-than-a-brand/more-than-a-brand-detail-01.webp`
-- Current source: `/visuals/posting-02.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-02.jpg` (live source; target path reserved)
 - Purpose: Project feature visual
 - Recommended ratio: Natural image ratio; 3:2 recommended for future photography
 - Recommended dimensions: 2400 × 1600
@@ -429,7 +430,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### portfolio/merchandise/everyday-objects — Portfolio grid / Home Featured Work — everyday-objects-cover.webp
 
 - Target: `/images/portfolio/merchandise/everyday-objects/everyday-objects-cover.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Project preview
 - Recommended ratio: 3:2
 - Recommended dimensions: 1800 × 1200
@@ -440,7 +441,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### portfolio/merchandise/everyday-objects — Project detail — everyday-objects-detail-01.webp
 
 - Target: `/images/portfolio/merchandise/everyday-objects/everyday-objects-detail-01.webp`
-- Current source: `/visuals/posting-03.jpg` (still live; target is reserved)
+- Current source: `/visuals/posting-03.jpg` (live source; target path reserved)
 - Purpose: Project feature visual
 - Recommended ratio: Natural image ratio; 3:2 recommended for future photography
 - Recommended dimensions: 2400 × 1600
@@ -451,7 +452,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared — Header + Footer — abound-logo.png
 
 - Target: `/images/shared/abound-logo.png`
-- Current source: `/abound-logo.png` (still live; target is reserved)
+- Current source: `/abound-logo.png` (live source; target path reserved)
 - Purpose: Abound Creation logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: At least 960px wide; transparent PNG or SVG
@@ -462,7 +463,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared — Browser tab — abound-favicon.png
 
 - Target: `/images/shared/abound-favicon.png`
-- Current source: `/favicon.png` (still live; target is reserved)
+- Current source: `/favicon.png` (live source; target path reserved)
 - Purpose: Browser favicon
 - Recommended ratio: 1:1
 - Recommended dimensions: 32 × 32 or 48 × 48 PNG
@@ -473,7 +474,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared/clients — Home / Our Clients — client-trustinsure-logo.png
 
 - Target: `/images/shared/clients/client-trustinsure-logo.png`
-- Current source: `/client-logos/client-01.png` (still live; target is reserved)
+- Current source: `/client-logos/client-01.png` (live source; target path reserved)
 - Purpose: trustinsure client logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: 540px wide minimum; transparent PNG or SVG
@@ -484,7 +485,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared/clients — Home / Our Clients — client-ct-and-co-logo.png
 
 - Target: `/images/shared/clients/client-ct-and-co-logo.png`
-- Current source: `/client-logos/client-02.png` (still live; target is reserved)
+- Current source: `/client-logos/client-02.png` (live source; target path reserved)
 - Purpose: ct-and-co client logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: 540px wide minimum; transparent PNG or SVG
@@ -495,7 +496,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared/clients — Home / Our Clients — client-reka-furniture-logo.png
 
 - Target: `/images/shared/clients/client-reka-furniture-logo.png`
-- Current source: `/client-logos/client-03.png` (still live; target is reserved)
+- Current source: `/client-logos/client-03.png` (live source; target path reserved)
 - Purpose: reka-furniture client logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: 540px wide minimum; transparent PNG or SVG
@@ -506,7 +507,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared/clients — Home / Our Clients — client-top-point-interior-design-logo.png
 
 - Target: `/images/shared/clients/client-top-point-interior-design-logo.png`
-- Current source: `/client-logos/client-04.png` (still live; target is reserved)
+- Current source: `/client-logos/client-04.png` (live source; target path reserved)
 - Purpose: top-point-interior-design client logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: 540px wide minimum; transparent PNG or SVG
@@ -517,7 +518,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared/clients — Home / Our Clients — client-johindah-malim-logo.png
 
 - Target: `/images/shared/clients/client-johindah-malim-logo.png`
-- Current source: `/client-logos/client-05.png` (still live; target is reserved)
+- Current source: `/client-logos/client-05.png` (live source; target path reserved)
 - Purpose: johindah-malim client logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: 540px wide minimum; transparent PNG or SVG
@@ -528,7 +529,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared/clients — Home / Our Clients — client-everwyn-realty-management-logo.png
 
 - Target: `/images/shared/clients/client-everwyn-realty-management-logo.png`
-- Current source: `/client-logos/client-06.png` (still live; target is reserved)
+- Current source: `/client-logos/client-06.png` (live source; target path reserved)
 - Purpose: everwyn-realty-management client logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: 540px wide minimum; transparent PNG or SVG
@@ -539,7 +540,7 @@ See PORTFOLIO-GUIDE.md for project categories, route generation and multi-catego
 ### shared/clients — Home / Our Clients — client-stickjobs-logo.png
 
 - Target: `/images/shared/clients/client-stickjobs-logo.png`
-- Current source: `/client-logos/client-07.png` (still live; target is reserved)
+- Current source: `/client-logos/client-07.png` (live source; target path reserved)
 - Purpose: stickjobs client logo
 - Recommended ratio: Preserve native logo ratio
 - Recommended dimensions: 540px wide minimum; transparent PNG or SVG

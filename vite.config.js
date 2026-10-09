@@ -13,7 +13,7 @@ export default defineConfig({
       server.middlewares.use(async (request, response, next) => {
         const url = new URL(request.url, 'http://localhost');
         const pathname = url.pathname;
-        if (pathname.startsWith('/@') || pathname.startsWith('/node_modules/') || /\.(js|css|jpg|png|svg|webp)$/.test(pathname)) return next();
+        if (pathname.startsWith('/@') || pathname.startsWith('/node_modules/') || /\.(js|jsx|mjs|ts|tsx|css|jpg|png|svg|webp)$/.test(pathname)) return next();
         const redirect = redirectFor(pathname);
         if (redirect) { response.writeHead(308, { Location: redirect + url.search }); response.end(); return; }
         if (pathname === '/sitemap.xml' || pathname === '/robots.txt') {

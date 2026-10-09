@@ -23,6 +23,11 @@ export const pages = [
 })));
 
 export const redirects = {
+  ...Object.fromEntries(portfolioProjects.flatMap(project => (project.aliases || []).flatMap(alias => [
+    [`/portfolio/${alias}`, `/portfolio/${project.slug}`],
+    [`/portfolio/${alias}/index.html`, `/portfolio/${project.slug}`],
+    [`/work/${alias}`, `/portfolio/${project.slug}`],
+  ]))),
   ...Object.fromEntries(portfolioProjects.map(project => [`/work/${project.slug}`, `/portfolio/${project.slug}`])),
   '/services': '/services/branding',
   '/work': '/portfolio',

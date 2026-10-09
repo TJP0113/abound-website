@@ -12,5 +12,11 @@
   "devDependencies": {
     "vite": "^4.5.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "motion": "^14.0.0",
+    "ogl": "^1.0.11",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
 }

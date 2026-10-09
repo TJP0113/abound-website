@@ -1,0 +1,67 @@
+.animated-gradient-text {
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  max-width: fit-content;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.5s ease-out;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.animated-gradient-text.with-border { padding: 0.35rem 0.75rem; }
+.gradient-overlay { position: absolute; inset: 0; border-radius: inherit; z-index: 0; pointer-events: none; }
+.gradient-overlay::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  transform: translate(-50%, -50%);
+  border-radius: inherit;
+  background-color: #120f17;
+  z-index: -1;
+}
+.text-content {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Keep the registry effect inline with Abound's existing headline flow. */
+.animated-gradient-text.headline-gradient {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  display: inline;
+  flex-direction: inherit;
+  align-items: baseline;
+  justify-content: flex-start;
+  text-align: inherit;
+  border-radius: 0;
+  font: inherit;
+  backdrop-filter: none;
+  transition: none;
+  overflow: visible;
+  cursor: inherit;
+  user-select: text;
+}
+.animated-gradient-text.headline-gradient > .text-content {
+  display: inline;
+  position: relative;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  white-space: inherit;
+  user-select: text;
+}

@@ -347,5 +347,29 @@ export const imageManifest = {
         "width": 960
       }
     ]
+  },
+  "/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover.webp": {
+    "width": 1536,
+    "height": 1024,
+    "default": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-1200.webp",
+    "variants": [
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-1536.webp",
+        "width": 1536
+      }
+    ],
+    "share": "/optimized/images/portfolio/uniforms/professional-auto-detailing-shop/professional-auto-detailing-shop-cover-share.jpg"
   }
 };
