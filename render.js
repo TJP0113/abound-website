@@ -1,4 +1,5 @@
 import { portfolioProjects, portfolioFilters } from './src/data/portfolio-data.js';
+import { getFeaturedReviews, googleReviewProfile } from './src/data/google-reviews.js';
 import { imageMap, imagePath, serviceImageKeys } from './src/data/image-map.js';
 import { responsiveImage } from './images.js';
 import { outlineIcon } from './icons.js';
@@ -224,6 +225,28 @@ function cta() {
     </section>`;
 }
 
+function homeReviews() {
+  const featuredReviews = getFeaturedReviews();
+  return `<section class="home-reviews" aria-labelledby="home-reviews-title">
+    <div class="home-reviews-intro scroll-rise">
+      <span class="eyebrow">CLIENT WORDS</span>
+      <h2 id="home-reviews-title">What our<br />clients <em>say.</em></h2>
+      <p lang="zh-Hans">来自客户的真实反馈。</p>
+      <span class="home-reviews-selection">Selected Google Reviews · Excerpt</span>
+    </div>
+    <div class="home-reviews-content" data-review-carousel role="region" aria-roledescription="carousel" aria-label="Selected client reviews">
+      <div class="home-reviews-list scroll-rise">${featuredReviews.map((review, index) => `<figure class="home-review${index === 0 ? ' is-active' : ''}" data-review-slide data-review-id="${review.id}" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${featuredReviews.length}"${index ? ' hidden inert aria-hidden="true"' : ''}>
+        <div class="home-review-rating" role="img" aria-label="${review.rating} out of 5 stars"><span aria-hidden="true">${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</span></div>
+        <blockquote><p>${review.excerpt || review.text}</p></blockquote>
+        <figcaption><span class="home-review-author"><span class="home-review-avatar" aria-hidden="true"><span class="home-review-initials">${review.name.trim().split(/\s+/).filter(Boolean).map(part => Array.from(part)[0]).filter((_, i, parts) => i === 0 || i === parts.length - 1).join('').toUpperCase()}</span>${review.avatar ? `<img src="${review.avatar}" alt="" width="40" height="40" loading="lazy" decoding="async" />` : ''}</span><span class="home-review-name">${review.name}</span></span></figcaption>
+      </figure>`).join('')}</div>
+      <div class="home-review-navigation"><span data-review-counter aria-hidden="true">01 / ${String(featuredReviews.length).padStart(2, '0')}</span><div data-review-controls hidden><button type="button" data-review-previous aria-label="Previous review">←</button><button type="button" data-review-next aria-label="Next review">→</button></div></div>
+      <span class="visually-hidden" data-review-status role="status" aria-live="polite" aria-atomic="true"></span>
+      <a class="text-link home-reviews-all" href="${googleReviewProfile.url}" target="_blank" rel="noopener noreferrer">Read all Google Reviews ${arrow}</a>
+    </div>
+  </section>`;
+}
+
 function home() {
   return `
     ${nav()}
@@ -317,7 +340,7 @@ function home() {
             <article class="approach-step"><span class="approach-icon"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="18" cy="22" r="11"/><path d="M18 16v7l5 3M23 9h10v10M33 9 23 19"/></svg></span><span class="approach-number">04</span><h3>Carry it through.</h3><p>We bring the design to life across the touchpoints your audience meets.</p></article>
           </div>
         </section>
-        ${cta().replace('class="closing-cta"', `class="closing-cta has-texture texture-right" style="--atmosphere-texture:url('${imagePath(imageMap.home.texture)}')"`)}
+        ${homeReviews()}
       </div>
     </main>
     ${footer()}`;

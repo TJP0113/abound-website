@@ -1,4 +1,5 @@
 import { renderPage } from './render.js';
+import { initReviewCarousel } from './src/components/review-carousel.js';
 import { matchesPortfolioCategory } from './src/data/portfolio-data.js';
 import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -242,6 +243,7 @@ document.querySelectorAll('.sc-cards').forEach(grid => {
     element.style.setProperty('--card-delay', `${(index % 3) * 100}ms`);
   });
 });
+document.querySelectorAll('[data-review-carousel]').forEach(root => initReviewCarousel(root, motionPreference));
 document.querySelectorAll('.approach-step, .principle-list article, .sc-process li').forEach(element => {
   const number = element.querySelector('.approach-number, .sc-number, :scope > span');
   if (number) number.classList.add('number-reveal');
